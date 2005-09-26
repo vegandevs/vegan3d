@@ -23,7 +23,7 @@ ordirgl(object, display = "sites", choices = 1:3, type = "p",
         ax.col = "red", arr.col = "yellow", text, envfit, ...)
 orglpoints(object, display = "sites", choices = 1:3, ...)
 orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
-        ...)
+        adj = 0.5, ...)
 orglsegments(object, groups, display = "sites", choices = 1:3, ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
         choices = 1:3, ...)
@@ -49,8 +49,9 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
     \code{\link[scatterplot3d]{scatterplot3d}}. If missing, labels  are
     taken from the
     ordination result. Set to \code{NA} to supress labels. }
-  \item{justify}{Text justification passed to
-    \code{\link[rgl]{rgl.texts}}.}
+  \item{justify, adj}{Text justification passed to
+    \code{\link[rgl]{rgl.texts}}. One of these is used depending on the
+    versionof \pkg{rgl} installed.}
   \item{groups}{Factor giving the groups for which the graphical item is
     drawn.}
   \item{w}{Weights used to find the average within group. Weights are
@@ -102,11 +103,8 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
   can be rotated with mouse, and zoomed into with mouse buttons or wheel
   (but Mac users with one-button mouse should see
   \code{\link[rgl]{rgl.viewpoint}}), or try ctrl-button. MacOS X users
-  must start \code{X11}
-  before calling \code{\link[rgl]{rgl}} commands, and all \code{X11} users
-  must be aware of possibility of R crash with
-  \code{\link[rgl]{rgl.quit}} or  \code{\link[rgl]{rgl.close}}. Function
-  \code{ordirgl} uses default settings, and you should consult the
+  must start \code{X11} before calling \code{\link[rgl]{rgl}} commands.
+  Function \code{ordirgl} uses default settings, and you should consult the
   underlying functions  \code{\link[rgl]{rgl.points}},
   \code{\link[rgl]{rgl.texts}} to see how to control the
   graphics. Function \code{ordirgl} always cleans its graphic window
@@ -121,7 +119,7 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
   \code{"lc"} or linear combination scores if \code{"groups"} is
   missing. In addition, basic \code{rgl} functions 
   \code{\link[rgl]{rgl.points}}, \code{\link[rgl]{rgl.texts}},
- \code{\link[rgl]{rgl.lines}} and many others can be used.
+ \code{\link[rgl]{rgl.lines}} and many others can be used. 
 }
  \value{
   Function \code{ordiplot3d} returns invisibly an object of class
@@ -150,7 +148,13 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
   that \code{\link[rgl]{rgl.texts}} does  not always position the text
   like supposed, and it may be safe to verify text location with
   corresponding points.
-} 
+}
+
+\note{The user interface of \pkg{rgl} changed in version 0.65, but
+  the \code{ordirgl} functions do not yet fully use the new
+  capablities.  However, they should work both in old and new versions
+  of \pkg{rgl}. 
+  }
 
 \seealso{   \code{\link[scatterplot3d]{scatterplot3d}},
   \code{\link[rgl]{rgl}}, \code{\link[rgl]{rgl.points}},
@@ -164,22 +168,24 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
 ## 'scatterplot3d' and 'rgl' (and the latter needs user interaction).
 #####
 #### Default 'ordiplot3d'
-\dontrun{data(dune)}
-\dontrun{data(dune.env)}
-\dontrun{ord <- cca(dune ~ A1 + Moisture, dune.env)}
-\dontrun{ordiplot3d(ord)}
+\dontrun{
+data(dune)
+data(dune.env)
+ord <- cca(dune ~ A1 + Moisture, dune.env)
+ordiplot3d(ord)
 #### A boxed 'pin' version
-\dontrun{ordiplot3d(ord, type = "h")}
+ordiplot3d(ord, type = "h")
 #### More user control
-\dontrun{pl <- ordiplot3d(ord, angle=15, type="n")}
-\dontrun{points(pl, "points", pch=16, col="red", cex = 0.7)}
+pl <- ordiplot3d(ord, angle=15, type="n")
+points(pl, "points", pch=16, col="red", cex = 0.7)
 #### identify(pl, "arrows", col="blue") would put labels in better positions
-\dontrun{text(pl, "arrows", col="blue", pos=3)}
-\dontrun{text(pl, "centroids", col="blue", pos=1, cex = 1.2)}
+text(pl, "arrows", col="blue", pos=3)
+text(pl, "centroids", col="blue", pos=1, cex = 1.2)
 #### ordirgl
-\dontrun{ordirgl(ord, size=2)}
-\dontrun{ordirgl(ord, display = "species", type = "t")}
-\dontrun{rgl.quit() ## Safe with me, but may crash}
+ordirgl(ord, size=2)
+ordirgl(ord, display = "species", type = "t")
+rgl.quit()
+}
 }
 \keyword{ hplot }
 \keyword{ dynamic }
