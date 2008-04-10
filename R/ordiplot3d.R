@@ -1,4 +1,4 @@
-"ordiplot3d" <-
+`ordiplot3d` <-
     function (object, display = "sites", choices = 1:3, ax.col = 2, 
               arr.len = 0.1, arr.col = 4, envfit, xlab, ylab, zlab, ...) 
 {
@@ -27,9 +27,7 @@
         }
         if (!is.null(bp) && nrow(bp) > 0) {
             tmp <- pl$xyz.convert(bp)
-            mul <- par("usr")/c(range(tmp$x), range(tmp$y))
-            mul <- mul[is.finite(mul) & mul > 0]
-            mul <- min(mul)
+            mul <- ordiArrowMul(cbind(tmp$x, tmp$y), fill=1)
             bp.xyz <- pl$xyz.convert(bp * mul)
             orig <- pl$xyz.convert(0, 0, 0)
             arrows(orig$x, orig$y, bp.xyz$x, bp.xyz$y, len = arr.len, 
