@@ -1,3 +1,6 @@
+###
+### Editable Tcl/Tk plot for ordination
+###
 `orditkplot` <-
     function(x, display = "species", choices = 1:2, width, xlim, ylim,
              tcex=0.8, pcol, pbg, pcex = 0.7,
@@ -6,6 +9,11 @@
     if (!capabilities("tcltk"))
         stop("Your R has no capability for Tcl/Tk")
     require(tcltk) || stop("requires package tcltk")
+
+############################
+### Check and sanitize input
+###########################
+    
     ## Graphical parameters and constants, and save some for later plotting
     p <- par()
     sparnam <- c("bg","cex", "cex.axis","cex.lab","col", "col.axis", "col.lab",
@@ -57,12 +65,22 @@
     fnt <- c(p$family, round(p$ps*p$cex*tcex), saneslant(p$font))
     fnt.axis <- c(p$family, round(p$ps*p$cex.axis), saneslant(p$font.axis))
     fnt.lab <- c(p$family, round(p$ps*p$cex.lab), saneslant(p$font.lab))
+
+############################
+### Initialize Tcl/Tk Window
+############################
+
     ## toplevel
     w <- tktoplevel()
     tktitle(w) <- deparse(match.call())
     ## Max dim of windows (depends on screen)
     YSCR <- as.numeric(tkwinfo("screenheight", w)) - 150
     XSCR <- as.numeric(tkwinfo("screenwidth", w))
+
+################################
+### Buttons and button functions
+################################
+
     ## Buttons
     buts <- tkframe(w)
     ## Copy current canvas to EPS using the standard Tcl/Tk utility
@@ -156,17 +174,22 @@
         pixdim <- round(xy$dim*PPI*p2p)
         switch(ftype,
                eps = postscript(file=fname, width=xy$dim[1], height=xy$dim[2],
-                     paper="special", horizontal = FALSE),
+               paper="special", horizontal = FALSE),
                pdf = pdf(file=fname, width=xy$dim[1], height=xy$dim[2]),
                png = png(file=fname, width=pixdim[1], height=pixdim[2]),
                jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2],
-                     quality = 100),
+               quality = 100), 
                bmp = bmp(file=fname, width=pixdim[1], height=pixdim[2]),
                fig = xfig(file=fname, width=xy$dim[1], height=xy$dim[2]))
         plot.orditkplot(xy)
         dev.off()
     }
     export <- tkbutton(buts, text="Export plot", command=devDump)
+
+##########
+### Canvas
+##########
+    
     ## Make canvas
     sco <- try(scores(x, display=display, choices = choices, ...),
                silent = TRUE)
@@ -213,6 +236,7 @@
         y <- (xy0[2] - row[2]) * yincr + mar[3]
         c(x,y)
     }
+    ## User coordinates of an item
     xy2usr <- function(item) {
         xy <- as.numeric(tkcoords(can, item))
         x <- xy[1] 
@@ -220,6 +244,13 @@
         x <- xrange[1] + (x - mar[2])/xincr 
         y <- yrange[2] - (y - mar[3])/yincr 
         c(x,y)
+    }
+    ## Canvas x or y to user coordinates
+    x2usr <- function(xcan) {
+        xrange[1] + (xcan - mar[2])/xincr
+    }
+    y2usr <- function(ycan) {
+        yrange[2] - (ycan - mar[3])/yincr
     }
     ## Equal aspect ratio
     height <- round((diff(yrange)/diff(xrange)) * xusr)
@@ -288,7 +319,13 @@
         labtext[[lab]] <- labs[i]
         id[[lab]] <- i
     }
+
+##############################
+### Mouse operations on canvas
+##############################
+    
     ## Plotting and Moving
+    ## Select label
     pDown <- function(x, y) {
         x <- as.numeric(x)
         y <- as.numeric(y)
@@ -302,6 +339,7 @@
         .lastX <<- x
         .lastY <<- y
     }
+    ## Move label
     pMove <- function(x, y) {
         x <- as.numeric(x)
         y <- as.numeric(y)
@@ -309,18 +347,69 @@
         tkdelete(can, "ptr")
         .lastX <<- x
         .lastY <<- y
+        ## xadj,yadj: adjust for canvas scrolling
         xadj <- as.numeric(tkcanvasx(can, 0))
         yadj <- as.numeric(tkcanvasy(can, 0))
         conn <- tkcreate(can, "line", .lastX + xadj, .lastY+yadj,
                          .pX, .pY, fill="red")
         tkaddtag(can, "ptr", "withtag", conn)
     }
+    ## Edit label
+    pEdit <- function() {
+        tkdtag(can, "selected")
+        tkaddtag(can, "selected", "withtag", "current")
+        tkitemraise(can, "current")
+        click <- tkfind(can, "withtag", "current")
+        txt <- tclVar(labtext[[click]])
+        i <- as.numeric(id[[click]])
+        tt <- tktoplevel()
+        labEd <- tkentry(tt, width=20, textvariable=txt)
+        tkgrid(tklabel(tt, text = "Edit label"))
+        tkgrid(labEd, pady="5m", padx="5m")
+        isDone <- function() {
+            txt <- tclvalue(txt)
+            tkitemconfigure(can, click, text = txt)
+            rownames(sco)[i] <<- txt
+            tkdestroy(tt)
+        }
+        tkbind(labEd, "<Return>", isDone)
+    }
+    ## Zooming: draw rectangle and take its user coordinates
+    ## Rectangle: first corner
+    pRect0 <- function(x, y) {
+        x <- as.numeric(x)
+        y <- as.numeric(y)
+        ## yadj here and below adjusts for canvas scrolling
+        yadj <- as.numeric(tkcanvasy(can, 0))
+        .pX <<- x
+        .pY <<- y + yadj
+    }
+    ## Grow rectangle
+    pRect <- function(x, y) {
+        x <- as.numeric(x)
+        y <- as.numeric(y)
+        tkdelete(can, "box")
+        yadj <- as.numeric(tkcanvasy(can, 0))
+        .lastX <<- x
+        .lastY <<- y + yadj
+        rect <- tkcreate(can, "rectangle", .pX, .pY, .lastX, .lastY,
+                         outline="blue")
+        tkaddtag(can, "box", "withtag", rect)
+    }
+    ## Redraw ordiktplot with new xlim and ylim
+    ## FIXME: zooming does not pass "..." arguments
+    pZoom <- function() {
+        xlim <- sort(c(x2usr(.pX), x2usr(.lastX)))
+        ylim <- sort(c(y2usr(.pY), y2usr(.lastY)))
+        orditkplot(x, xlim = xlim, ylim = ylim, ...)
+    }
     ## Dummy location of the mouse
     .lastX <- 0
     .lastY <- 0
     .pX <- 0
     .pY <- 0
-    ## Highlight a label when mouse moves in
+    ## Mouse bindings:
+    ## Moving a labels
     tkitembind(can, "label", "<Any-Enter>",
                function() tkitemconfigure(can, "current", fill="red"))
     tkitembind(can, "label", "<Any-Leave>",
@@ -328,6 +417,15 @@
     tkitembind(can, "label", "<1>", pDown)
     tkitembind(can, "label", "<ButtonRelease-1>",
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})
-    
     tkbind(can, "<B1-Motion>", pMove)
+    ## Edit labels
+    tkitembind(can, "label", "<Double-Button-1>", pEdit) 
+    ## Zoom (with one-button mouse)
+    tkbind(can, "<Shift-Button-1>", pRect0)
+    tkbind(can, "<Shift-B1-Motion>", pRect)
+    tkbind(can, "<Shift-ButtonRelease>", pZoom)
+    ## Zoom (with right button)
+    tkbind(can, "<Button-3>", pRect0)
+    tkbind(can, "<B3-Motion>", pRect)
+    tkbind(can, "<ButtonRelease-3>", pZoom)
 }

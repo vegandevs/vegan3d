@@ -49,7 +49,24 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 \details{ Function \code{orditkplot} uses \pkg{tcltk} package to draw
   Tcl/Tk based ordination graphics with points and labels. The function
   opens an editable canvas with fixed points, but the labels can be
-  moved with mouse to better positions. In addition there are buttons
+  dragged with mouse to better positions or edited. In addition, it is
+  possible to zoom to a part of the graph.
+
+  The function knows the following mouse operations:
+  \itemize{
+    \item \strong{Left mouse button} can be used to move labels to better
+    positions. A line will connect a label to the corresponding point.
+    \item \strong{Double clicking left mouse button} opens a window where the
+    label can be edited. After editing the label, hit the Return key.
+    \item \strong{Right mouse button} (or alternatively, Shift-Mouse button with
+    one-button mouse) can be used for zooming to a part of the
+    graph. Keeping the mouse button down and dragging will draw a box
+    of the zoomed area, and after releasing the button, a new plot window
+    will be created (this is still preliminary: all arguments are not
+    passed to the new plot).
+  }
+
+  In addition there are buttons
   for the following tasks: \strong{Copy to EPS} copies the current plot
   to an encapsulated postscript (eps) file using standard Tcl/Tk
   utilities. The faithfullness of this copy is system dependent. Button
