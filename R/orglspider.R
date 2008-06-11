@@ -2,6 +2,7 @@
     function (object, groups, display = "sites",
               w = weights(object, display), choices = 1:3, ...) 
 {
+    weights.default <- function(object, ...) NULL
     if (inherits(object, "cca") && missing(groups)) {
         lc <- scores(object, display = "lc", choices = choices, ...)
         wa <- scores(object, display = "wa", choices = choices, ...)
