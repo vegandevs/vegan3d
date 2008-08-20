@@ -1,3 +1,4 @@
+
 ###
 ### Editable Tcl/Tk plot for ordination
 ###
@@ -409,7 +410,7 @@
     .pX <- 0
     .pY <- 0
     ## Mouse bindings:
-    ## Moving a labels
+    ## Moving a label
     tkitembind(can, "label", "<Any-Enter>",
                function() tkitemconfigure(can, "current", fill="red"))
     tkitembind(can, "label", "<Any-Leave>",
@@ -417,7 +418,7 @@
     tkitembind(can, "label", "<1>", pDown)
     tkitembind(can, "label", "<ButtonRelease-1>",
                function() {tkdtag(can, "selected"); tkdelete(can, "ptr")})
-    tkbind(can, "<B1-Motion>", pMove)
+    tkitembind(can, "label", "<B1-Motion>", pMove)
     ## Edit labels
     tkitembind(can, "label", "<Double-Button-1>", pEdit) 
     ## Zoom (with one-button mouse)
