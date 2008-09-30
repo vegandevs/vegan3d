@@ -15,7 +15,7 @@
 }
 \usage{
 orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim, 
-   tcex = 0.8, pcol, pbg, pcex = 0.7, labels,  ...)
+   tcex = 0.8, tcol, pch = 1,  pcol, pbg, pcex = 0.7, labels,  ...)
 \method{plot}{orditkplot}(x, ...)
 \method{points}{orditkplot}(x, ...)
 \method{text}{orditkplot}(x, ...)
@@ -36,8 +36,11 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \item{xlim, ylim}{x and y limits for plots: points outside these
     limits will be completely removed.}
   \item{tcex}{Character expansion for text labels.}
-  \item{pcol, pbg}{Line and fill colours of points. Defaults \code{pcol="black"} 
-    and \code{pbg="transparent"}. } 
+  \item{tcol}{Colour of text labels.}
+  \item{pch, pcol, pbg}{Point type and outline and fill colours. 
+    Defaults \code{pcol="black"}  and \code{pbg="transparent"}. 
+   Argument \code{pbg} has an effect
+    only in filled plotting characters \code{pch = 21} to \code{25}.  } 
   \item{pcex}{Expansion factor for point size.}  
   \item{labels}{Labels used instead of row names.}
   \item{\dots}{Other arguments passed to the function. These can be
@@ -95,13 +98,21 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \R plots, your plot must have the same dimensions as the
   \code{orditkplot} canvas to have identical location of the labels.
 
+  The function only displays one set of scores. However, you can use
+  \code{\link{ordipointlabel}} to produce a result object that has
+  different points and text types for several sets of scores and this
+  can further edited fith \code{orditkplot}. For a good starting
+  solution you need to scale the \code{\link{ordipointlabel}} result so
+  that the points span over the whole horizontal axis.
+
   The plot is a Tcl/Tk canvas, but the function tries to replicate
   standard graphical device of the platform, and it honours several
   graphical parameters (see \code{\link{par}}).  Many of the graphical
   parameters can be given on the command line, and they will be passed
   to the function without influencing other graphical devices in \R.
   At the moment, the
-  following graphical parameters are honoured: \code{bg}, \code{cex},
+  following graphical parameters are honoured: 
+  \code{pch} \code{bg},  \code{cex},
   \code{cex.axis}, \code{cex.lab}, \code{col} (for labels),
   \code{col.axis}, \code{col.lab}, \code{family} (for font faces),
   \code{fg}, \code{font}, \code{font.axis}, \code{font.lab},
@@ -130,7 +141,9 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \code{\link[tcltk]{tcltk-package}}. 
 
 }
-\seealso{ \code{\link{ordiplot}}, \code{\link{plot.cca}},
+\seealso{ Function \code{\link{ordipointlabel}} is an automatic
+  procedure with similar goals of avoiding overplotting. 	   
+  See \code{\link{ordiplot}}, \code{\link{plot.cca}},
   \code{\link{ordirgl}} and \code{\link{orditorp}} for alternative
   ordination plots, and \code{\link{scores}} for extracting ordination
   scores.  }
@@ -140,7 +153,12 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 \dontrun{
 data(varespec)
 ord <- cca(varespec)
+## Do something with the graph and end by clicking "Dismiss"
 orditkplot(ord, mar = c(4,4,1,1)+.1, font=3)
+## Use ordipointlabel to produce a plot that has both species and site
+## scores in different colors and plotting symbols
+pl <- ordipointlabel(ord)
+orditkplot(pl)
 }
 }
 \keyword{ iplot }
