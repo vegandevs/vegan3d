@@ -230,6 +230,7 @@
                     "png" = "{PNG File} {.png}",
                     "jpg" = "{JPEG File} {.jpg .jpeg}",
                     "bmp" = "{BMP File} {.bmp}",
+                    "tiff"= "{TIFF File} {.tif .tiff}",
                     "fig" = "{XFig File} {.fig}")
         falt <- rep(TRUE, length(ftypes))
         names(falt) <- names(ftypes)
@@ -237,6 +238,10 @@
             falt["png"] <- FALSE
         if (!capabilities("jpeg"))
             falt["jpg"] <- FALSE
+        ## Should work also in R < 2.8.0 with no capabilities("tiff")
+        if (!isTRUE(unname(capabilities("tiff"))))
+            falt["tiff"] <- FALSE
+        ## bmp lives only in Windows
         if (.Platform$OS.type != "windows")
             falt["bmp"] <- FALSE
         ftypes <- ftypes[falt]
@@ -248,6 +253,8 @@
         ftype <- ftype[length(ftype)]
         if (ftype == "jpeg")
             ftype <- "jpg"
+        if (ftype == "tif")
+            ftype <- "tiff"
         mess <- "is not a supported type: file not produced. Supported types are"
         if (!(ftype %in% names(ftypes))) {
             tkmessageBox(message=paste(sQuote(ftype), mess, paste(names(ftypes),
@@ -261,7 +268,8 @@
                pdf = pdf(file=fname, width=xy$dim[1], height=xy$dim[2]),
                png = png(file=fname, width=pixdim[1], height=pixdim[2]),
                jpg = jpeg(file=fname, width=pixdim[1], height=pixdim[2],
-               quality = 100), 
+               quality = 100),
+               tiff = tiff(file=fname, width=pixdim[1], height=pixdim[2]),
                bmp = bmp(file=fname, width=pixdim[1], height=pixdim[2]),
                fig = xfig(file=fname, width=xy$dim[1], height=xy$dim[2]))
         plot.orditkplot(xy)
