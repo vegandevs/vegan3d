@@ -2,7 +2,6 @@
     function (object, display = "sites", choices = 1:3, ax.col = 2, 
               arr.len = 0.1, arr.col = 4, envfit, xlab, ylab, zlab, ...) 
 {
-    require(scatterplot3d) || stop("Requires package 'scatterplot3d'")
     x <- scores(object, display = display, choices = choices, ...)
     if (missing(xlab)) xlab <- colnames(x)[1]
     if (missing(ylab)) ylab <- colnames(x)[2]
@@ -13,7 +12,7 @@
     ### come correctly out.
     rnge <- apply(x, 2, range)
     scl <- c(-0.5, 0.5) * max(apply(rnge, 2, diff))
-    pl <- ordiArgAbsorber(x[, 1], x[, 2], x[, 3],  
+    pl <- vegan:::ordiArgAbsorber(x[, 1], x[, 2], x[, 3],  
                           xlab = xlab, ylab = ylab, zlab = zlab,
                           xlim = mean(rnge[,1]) + scl,
                           ylim = mean(rnge[,2]) + scl,
@@ -38,7 +37,7 @@
         }
         if (!is.null(bp) && nrow(bp) > 0) {
             tmp <- pl$xyz.convert(bp)
-            mul <- ordiArrowMul(cbind(tmp$x, tmp$y), fill=1)
+            mul <- vegan:::ordiArrowMul(cbind(tmp$x, tmp$y), fill=1)
             bp.xyz <- pl$xyz.convert(bp * mul)
             orig <- pl$xyz.convert(0, 0, 0)
             arrows(orig$x, orig$y, bp.xyz$x, bp.xyz$y, length = arr.len, 
