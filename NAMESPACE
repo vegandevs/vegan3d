@@ -1,0 +1,16 @@
+## Could be more specific importFrom
+import(vegan)
+## we may need everything
+import(rgl)
+## scatterplot3d only has one function
+import(scatterplot3d)
+
+## export what we got
+export(ordiplot3d,
+       ordirgl,
+       orglpoints,
+       orglsegments,
+       orgltext,
+       rgl.isomap,
+       rgl.renyiaccum)
+
