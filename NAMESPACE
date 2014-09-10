@@ -1,5 +1,5 @@
-## Could be more specific importFrom
-import(vegan)
+## We need only scores() from vegan
+importFrom(vegan, scores)
 ## we may need everything
 import(rgl)
 ## scatterplot3d only has one function
