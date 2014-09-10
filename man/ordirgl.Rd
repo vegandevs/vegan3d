@@ -28,8 +28,6 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
   \item{display}{Display \code{"sites"} or \code{"species"} or other
     ordination object recognized by \code{\link{scores}}. }
   \item{choices}{Selected three axes. }
-    \item{arr.len}{'Length' (width) of arrow head passed to
-    \code{\link{arrows}} function. }
   \item{type}{The type of plots: \code{"p"} for points or \code{"t"} for
     text labels.}
   \item{ax.col}{Axis colour (concerns only the crossed axes through the
