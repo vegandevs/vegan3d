@@ -1,10 +1,8 @@
 ## What is vegan3d?
 
-**vegan3d** is a new package of 3D plotting routines split apart from
-**vegan**.
-
-This is a work in progress, and at the moment the package is still
-rudimentary and not at all a valid **R** package.
+**vegan3d** is an R package of 3D plotting routines split apart from
+**vegan**. It can be used for dynamic plots based on **rgl** package,
+and for static 3D plots based on **scatterplot3d** package.
 
 The package contains the following functions:
 
