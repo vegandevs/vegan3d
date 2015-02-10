@@ -1,5 +1,5 @@
 Package: vegan3d
-Title: Static and Dynamic 3D Plots for the vegan Package
+Title: Static and Dynamic 3D Plots for the 'vegan' Package
 Version: 0.65-1
 Date: 2015-02-09
 Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
