@@ -1,5 +1,5 @@
-## We need only scores() from vegan
-importFrom(vegan, scores)
+## Need only the following vegan
+importFrom(vegan, scores, ordiArrowMul)
 ## we may need everything
 import(rgl)
 ## scatterplot3d only has one function

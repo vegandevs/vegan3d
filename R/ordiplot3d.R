@@ -37,7 +37,7 @@
         }
         if (!is.null(bp) && nrow(bp) > 0) {
             tmp <- pl$xyz.convert(bp)
-            mul <- vegan:::ordiArrowMul(cbind(tmp$x, tmp$y), fill=1)
+            mul <- ordiArrowMul(cbind(tmp$x, tmp$y), fill=1)
             bp.xyz <- pl$xyz.convert(bp * mul)
             orig <- pl$xyz.convert(0, 0, 0)
             arrows(orig$x, orig$y, bp.xyz$x, bp.xyz$y, length = arr.len, 
