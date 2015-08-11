@@ -4,6 +4,10 @@ importFrom(vegan, scores, ordiArrowMul)
 import(rgl)
 ## scatterplot3d only has one function
 import(scatterplot3d)
+## explicit imports for base R functions
+  importFrom("grDevices", "rainbow")
+  importFrom("graphics", "arrows", "points")
+  importFrom("stats", "weighted.mean", "weights")
 
 ## export what we got
 export(ordiplot3d,
