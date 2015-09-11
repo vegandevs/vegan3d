@@ -10,7 +10,7 @@
   Function \code{ordirgl} displays three-dimensional dynamic ordination 
   graphs which can be rotated and zoomed into using \code{\link[rgl]{rgl}}
   package. This function works with all ordination
-  results form \code{vegan} and all ordination results known by the
+  results from \code{vegan} and all ordination results known by the
   \code{\link{scores}} function. 
 }
 \usage{
