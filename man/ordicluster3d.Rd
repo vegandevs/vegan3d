@@ -17,7 +17,7 @@ ordicluster3d(ord, cluster, choices = c(1, 2), display = "sites", ...)
 
 \arguments{
   \item{ord}{
-    An ordination object or an \code{\link[vegan]{ordilplot}} object.}
+    An ordination object or an \code{\link[vegan]{ordiplot}} object.}
 
   \item{cluster}{Result of hierarchic cluster analysis, such as
     \code{\link{hclust}} or \code{\link[cluster]{agnes}}.}
