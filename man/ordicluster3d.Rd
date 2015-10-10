@@ -14,7 +14,7 @@ Draw Cluster Tree over an Ordination Plane
 
 \usage{
 ordicluster3d(ord, cluster, choices = c(1, 2), display = "sites", ...)
-orglcluster(ord, cluster, ...)
+orglcluster(ord, cluster, choices = c(1, 2), display = "sites", ...)
 }
 
 \arguments{

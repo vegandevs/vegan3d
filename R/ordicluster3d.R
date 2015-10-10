@@ -35,9 +35,11 @@
 }
 
 `orglcluster` <-
-    function(ord, cluster, ...)
+    function(ord, cluster, choices = c(1, 2), display = "sites", ...)
 {
-    p <- cbind(scores(ord, ...), 0)
+    p <- cbind(scores(ord, choices = choices, display = display, ...), 0)
+    if (ncol(p) != 3)
+        stop(gettextf("needs 2D ordination plane, but got %d", ncol(p)-1))
     x <- reorder(cluster, p[,1], agglo.FUN = "mean")$value
     y <- reorder(cluster, p[,2], agglo.FUN = "mean")$value
     z <- cluster$height
