@@ -13,6 +13,7 @@ import(scatterplot3d)
 export(ordicluster3d,
        ordiplot3d,
        ordirgl,
+       orglcluster,
        orglpoints,
        orglsegments,
        orglspider,
