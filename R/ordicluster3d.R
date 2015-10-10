@@ -33,3 +33,27 @@
     pl$leaves <- leaf
     invisible(pl)
 }
+
+`orglcluster` <-
+    function(ord, cluster, ...)
+{
+    p <- cbind(scores(ord, ...), 0)
+    x <- reorder(cluster, p[,1], agglo.FUN = "mean")$value
+    y <- reorder(cluster, p[,2], agglo.FUN = "mean")$value
+    z <- cluster$height
+    merge <- cluster$merge
+    ## plot
+    rgl.clear()
+    rgl.points(p, col=2)
+    for (i in seq_len(nrow(merge)))
+        for(j in 1:2)
+            if (merge[i,j] < 0)
+                rgl.lines(c(x[i], p[-merge[i,j],1]),
+                          c(y[i], p[-merge[i,j],2]),
+                          c(z[i], 0), col=4)
+            else
+                rgl.lines(c(x[i], x[merge[i,j]]),
+                          c(y[i], y[merge[i,j]]),
+                          c(z[i], z[merge[i,j]]), col=4)
+}
+    
