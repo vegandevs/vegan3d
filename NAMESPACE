@@ -10,7 +10,8 @@ import(scatterplot3d)
   importFrom("stats", "weighted.mean", "weights")
 
 ## export what we got
-export(ordiplot3d,
+export(ordicluster3d,
+       ordiplot3d,
        ordirgl,
        orglpoints,
        orglsegments,
