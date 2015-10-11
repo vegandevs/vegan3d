@@ -1,5 +1,6 @@
 `ordicluster3d` <-
-    function(ord, cluster, display = "sites", choices = c(1,2), ...)
+    function(ord, cluster, display = "sites", choices = c(1,2), pcol = 1,
+             col = 1, type = "p", ...)
 {
     ## ordination scores in 2d: leaves
     ord <- scores(ord, choices = choices, display = display, ...)
@@ -13,7 +14,10 @@
     xyz <- cbind(x, y, "height" = cluster$height)
     ## set up frame
     pl <- scatterplot3d(rbind(ord, xyz), type = "n")
-    pl$points3d(ord, ...)
+    if (type == "p")
+        pl$points3d(ord, col = pcol, ...)
+    else if (type == "t")
+        text(pl$xyz.convert(ord), rownames(ord), col = pcol, ...)
     ## project leaves and nodes to 2d
     leaf <- pl$xyz.convert(ord)
     node <- pl$xyz.convert(xyz)
@@ -24,10 +28,12 @@
          for (j in 1:2)
              if (merge[i,j] < 0)
                  segments(node$x[i], node$y[i],
-                          leaf$x[-merge[i,j]], leaf$y[-merge[i,j]], ...)
+                          leaf$x[-merge[i,j]], leaf$y[-merge[i,j]],
+                          col = col, ...)
              else
                  segments(node$x[i], node$y[i],
-                          node$x[merge[i,j]], node$y[merge[i,j]], ...)
+                          node$x[merge[i,j]], node$y[merge[i,j]],
+                          col = col, ...)
 
     pl$nodes <- node
     pl$leaves <- leaf
@@ -35,7 +41,8 @@
 }
 
 `orglcluster` <-
-    function(ord, cluster, display = "sites", choices = c(1, 2), ...)
+    function(ord, cluster, display = "sites", choices = c(1, 2),
+             pcol = "red", col = "blue", type = "p", ...)
 {
     p <- cbind(scores(ord, choices = choices, display = display, ...), 0)
     if (ncol(p) != 3)
@@ -48,16 +55,18 @@
     z <- mean(c(diff(range(x)), diff(range(y))))/diff(range(z)) * z
     ## plot
     rgl.clear()
-    rgl.points(p, col=2)
+    if (type == "p")
+        rgl.points(p, col = pcol, ...)
+    else if (type == "t")
+        rgl.texts(p, text = rownames(p), col = pcol, ...)
     for (i in seq_len(nrow(merge)))
         for(j in 1:2)
             if (merge[i,j] < 0)
                 rgl.lines(c(x[i], p[-merge[i,j],1]),
                           c(y[i], p[-merge[i,j],2]),
-                          c(z[i], 0), col=4)
+                          c(z[i], 0), col=col)
             else
                 rgl.lines(c(x[i], x[merge[i,j]]),
                           c(y[i], y[merge[i,j]]),
-                          c(z[i], z[merge[i,j]]), col=4)
+                          c(z[i], z[merge[i,j]]), col=col)
 }
-    
