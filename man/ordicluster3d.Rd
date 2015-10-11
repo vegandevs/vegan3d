@@ -13,9 +13,9 @@ Draw Cluster Tree over an Ordination Plane
 }
 
 \usage{
-ordicluster3d(ord, cluster, display = "sites", choices = c(1, 2),
+ordicluster3d(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
     pcol = 1, col = 1, type = "p", ...)
-orglcluster(ord, cluster, display = "sites", choices = c(1, 2),
+orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
     pcol = "red", col = "blue", type = "p", ...)
 }
 
@@ -25,6 +25,10 @@ orglcluster(ord, cluster, display = "sites", choices = c(1, 2),
 
   \item{cluster}{Result of hierarchic cluster analysis, such as
     \code{\link{hclust}} or \code{\link[cluster]{agnes}}.}
+
+  \item{prune}{Number of upper levels hierarchies removed from the
+    tree. If \code{prune} > 0, tree will be cut into \code{prune + 1}
+    disconnected trees.}
 
   \item{choices}{
     Choice of ordination axes.}

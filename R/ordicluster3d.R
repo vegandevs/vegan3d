@@ -1,6 +1,6 @@
 `ordicluster3d` <-
-    function(ord, cluster, display = "sites", choices = c(1,2), pcol = 1,
-             col = 1, type = "p", ...)
+    function(ord, cluster, prune = 0, display = "sites", choices = c(1,2),
+             pcol = 1, col = 1, type = "p", ...)
 {
     ## ordination scores in 2d: leaves
     ord <- scores(ord, choices = choices, display = display, ...)
@@ -26,7 +26,7 @@
     ## two lines from each node down, either to a leaf or to an
     ## internal node
     merge <- cluster$merge
-    for (i in seq_len(nrow(merge)))
+    for (i in seq_len(nrow(merge) - prune))
          for (j in 1:2)
              if (merge[i,j] < 0)
                  segments(node$x[i], node$y[i],
@@ -43,7 +43,7 @@
 }
 
 `orglcluster` <-
-    function(ord, cluster, display = "sites", choices = c(1, 2),
+    function(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
              pcol = "red", col = "blue", type = "p", ...)
 {
     p <- cbind(scores(ord, choices = choices, display = display, ...), 0)
@@ -63,7 +63,7 @@
         rgl.points(p, col = pcol, ...)
     else if (type == "t")
         rgl.texts(p, text = rownames(p), col = pcol, ...)
-    for (i in seq_len(nrow(merge)))
+    for (i in seq_len(nrow(merge) - prune))
         for(j in 1:2)
             if (merge[i,j] < 0)
                 rgl.lines(c(x[i], p[-merge[i,j],1]),
