@@ -8,6 +8,8 @@
     if (ncol(ord) != 2)
         stop(gettextf("needs plane in 2d, got %d", ncol(ord)))
     ord <- cbind(ord, 0)
+    if (!inherits(cluster, "hclust")) # works only with hclust
+        cluster <- as.hclust(cluster) # or object that can be converted
     ## get coordinates of internal nodes with vegan:::reorder.hclust
     x <- reorder(cluster, ord[,1], agglo.FUN = "mean")$value
     y <- reorder(cluster, ord[,2], agglo.FUN = "mean")$value
@@ -47,6 +49,8 @@
     p <- cbind(scores(ord, choices = choices, display = display, ...), 0)
     if (ncol(p) != 3)
         stop(gettextf("needs 2D ordination plane, but got %d", ncol(p)-1))
+    if (!inherits(cluster, "hclust"))
+        cluster <- as.hclust(cluster)
     x <- reorder(cluster, p[,1], agglo.FUN = "mean")$value
     y <- reorder(cluster, p[,2], agglo.FUN = "mean")$value
     z <- cluster$height
