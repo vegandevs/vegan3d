@@ -68,6 +68,11 @@ orglcluster(ord, cluster, display = "sites", choices = c(1, 2),
   data(dune)
   d <- vegdist(dune)
   ordicluster3d(metaMDS(d), hclust(d), pch=16, col="blue")
+  ## orglcluster examples need interaction
+  \dontrun{
+  cl <- hclust(d, "aver")
+  orglcluster(metaMDS(d), cl, pcol = cutree(hclust(d), 3), col="yellow")
+  }
 }
 
 \keyword{ hplot }
