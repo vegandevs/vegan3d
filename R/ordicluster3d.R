@@ -44,6 +44,8 @@
     y <- reorder(cluster, p[,2], agglo.FUN = "mean")$value
     z <- cluster$height
     merge <- cluster$merge
+    ## adjust height
+    z <- mean(c(diff(range(x)), diff(range(y))))/diff(range(z)) * z
     ## plot
     rgl.clear()
     rgl.points(p, col=2)
