@@ -1,5 +1,5 @@
 `ordicluster3d` <-
-    function(ord, cluster, choices = c(1,2), display = "sites", ...)
+    function(ord, cluster, display = "sites", choices = c(1,2), ...)
 {
     ## ordination scores in 2d: leaves
     ord <- scores(ord, choices = choices, display = display, ...)
@@ -35,7 +35,7 @@
 }
 
 `orglcluster` <-
-    function(ord, cluster, choices = c(1, 2), display = "sites", ...)
+    function(ord, cluster, display = "sites", choices = c(1, 2), ...)
 {
     p <- cbind(scores(ord, choices = choices, display = display, ...), 0)
     if (ncol(p) != 3)
