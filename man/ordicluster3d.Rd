@@ -13,8 +13,10 @@ Draw Cluster Tree over an Ordination Plane
 }
 
 \usage{
-ordicluster3d(ord, cluster, display = "sites", choices = c(1, 2), ...)
-orglcluster(ord, cluster, display = "sites", choices = c(1, 2), ...)
+ordicluster3d(ord, cluster, display = "sites", choices = c(1, 2),
+    pcol = 1, col = 1, type = "p", ...)
+orglcluster(ord, cluster, display = "sites", choices = c(1, 2),
+    pcol = "red", col = "blue", type = "p", ...)
 }
 
 \arguments{
@@ -29,6 +31,13 @@ orglcluster(ord, cluster, display = "sites", choices = c(1, 2), ...)
 
   \item{display}{
     Ordination scores displayed.}
+
+  \item{pcol}{Colour of points or text.}
+
+  \item{col}{Colour of tree segments.}
+
+  \item{type}{Display of leaves: \code{"p"} for points, \code{"t"} for
+    item rownames of scores, and \code{"n"} for no display.}
 
   \item{\dots}{ Arguments passed to \code{\link[vegan]{scores}} and
     graphical functions.}
