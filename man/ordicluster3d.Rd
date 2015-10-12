@@ -14,9 +14,9 @@ Draw Cluster Tree over an Ordination Plane
 
 \usage{
 ordicluster3d(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
-    pcol = 1, col = 1, type = "p", ...)
+    col = "blue", type = "p", ...)
 orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
-    pcol = "red", col = "blue", type = "p", ...)
+    col = "blue", type = "p", ...)
 }
 
 \arguments{
@@ -36,9 +36,9 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   \item{display}{
     Ordination scores displayed.}
 
-  \item{pcol}{Colour of points or text.}
-
-  \item{col}{Colour of tree segments.}
+  \item{col}{Colour of tree. The colour can be a vector and it is used
+    for the points, text and terminal branches. The colour of internal
+    branches is a mixture of connected leaves.}
 
   \item{type}{Display of leaves: \code{"p"} for points, \code{"t"} for
     item rownames of scores, and \code{"n"} for no display.}
@@ -69,13 +69,15 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   \code{\link[vegan]{ordicluster}} in \pkg{vegan}.
 }
 \examples{
-  data(dune)
+  data(dune, dune.env)
   d <- vegdist(dune)
-  ordicluster3d(metaMDS(d), hclust(d), pch=16, col="blue")
-  ## orglcluster examples need interaction
-  \dontrun{
+  m <- metaMDS(d)
   cl <- hclust(d, "aver")
-  orglcluster(metaMDS(d), cl, pcol = cutree(hclust(d), 3), col="yellow")
+  ordicluster3d(m, cl, pch=16, col=cutree(cl, 3))
+  ## orglcluster examples need interaction
+\dontrun{
+  management <- with(dune.env, as.numeric(Management))
+  orglcluster(m, cl, col=management, size = 6)
   }
 }
 
