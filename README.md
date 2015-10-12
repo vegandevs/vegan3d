@@ -22,7 +22,8 @@ The package contains the following functions:
     dynamic spinnable plot based on **rgl**.
 
 Special plotting functions based on **lattice** and **tcltk** packages
-are still in **vegan**.
+are still in **vegan**. **ggplot2**-based functions are in
+[**ggvegan**](https://github.com/gavinsimpson/ggvegan) package.
 
 The **rgl** functions are based on the release 0.65-0. They work with
 more modern **rgl** but do not use its full capabilities.
