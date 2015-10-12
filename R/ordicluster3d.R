@@ -82,9 +82,11 @@
             if (merge[i,j] < 0)
                 rgl.lines(c(x[i], p[-merge[i,j],1]),
                           c(y[i], p[-merge[i,j],2]),
-                          c(z[i], 0), col = col[-merge[i,j]])
+                          c(z[i], 0),
+                          col = col[-merge[i,j]], ...)
             else
                 rgl.lines(c(x[i], x[merge[i,j]]),
                           c(y[i], y[merge[i,j]]),
-                          c(z[i], z[merge[i,j]]), col = lcol[merge[i,j]])
+                          c(z[i], z[merge[i,j]]),
+                          col = lcol[merge[i,j]], ...)
 }
