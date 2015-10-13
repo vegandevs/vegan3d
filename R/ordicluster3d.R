@@ -89,4 +89,8 @@
                           c(y[i], y[merge[i,j]]),
                           c(z[i], z[merge[i,j]]),
                           col = lcol[merge[i,j]], ...)
+    ## add a short nipple so that you see the root
+    n <- nrow(merge)
+    rgl.lines(c(x[n],x[n]), c(y[n],y[n]), c(z[n],1.05*z[n]),
+              col = lcol[n], ...)
 }
