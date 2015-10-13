@@ -74,10 +74,12 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   m <- metaMDS(d)
   cl <- hclust(d, "aver")
   ordicluster3d(m, cl, pch=16, col=cutree(cl, 3))
-  ## orglcluster examples need interaction
+  ## orglcluster makes ordinary rgl graphics. It accepts
+  ## rgl.material() settings, and you can add elements to the
+  ## open graph (for instance, bbox3d()).
 \dontrun{
   management <- with(dune.env, as.numeric(Management))
-  orglcluster(m, cl, col=management, size = 6)
+  orglcluster(m, cl, col=management, size = 6, lwd = 2, alpha = 0.6)
   }
 }
 
