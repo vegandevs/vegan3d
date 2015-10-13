@@ -8,7 +8,7 @@ Draw Cluster Tree over an Ordination Plane
 
 \description{
   Function draws a 3D plot where ordination result is at the bottom
-  plane and and a \code{\link{hclust}} dendrogam is drawn above the
+  plane and a \code{\link{hclust}} dendrogram is drawn above the
   plane.
 }
 
@@ -49,7 +49,7 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 
 \details{
   \code{ordicluster3d} uses \pkg{scatterplot3d} package to draw a
-  static 3D plot of the dendrogram over the ordinaation, and
+  static 3D plot of the dendrogram over the ordination, and
   \code{orglcluster} uses \pkg{rgl} to make a dynamic, spinnable plot.
 }
 
