@@ -1,6 +1,6 @@
 "orglspider" <-
     function (object, groups, display = "sites",
-              w = weights(object, display), choices = 1:3, ...) 
+              w = weights(object, display), choices = 1:3, col = 1, ...) 
 {
     weights.default <- function(object, ...) NULL
     if (inherits(object, "cca") && missing(groups)) {
@@ -18,6 +18,8 @@
         if (is.null(w)) 
             w <- rep(1, nrow(pts))
         inds <- names(table(groups))
+        col <- rep(col, length = length(inds))
+        names(col) <- inds
         for (is in inds) {
             gr <- out[groups == is]
             if (length(gr) > 1) {
@@ -26,7 +28,7 @@
                 ave <- apply(X, 2, weighted.mean, w = W)
                 for (i in 1:length(gr))
                     rgl.lines(c(ave[1], X[i,1]), c(ave[2], X[i, 2]),
-                              c(ave[3], X[i, 3]),  ...)
+                              c(ave[3], X[i, 3]),  col = col[is], ...)
             }
         }
     }
