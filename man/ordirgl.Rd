@@ -26,7 +26,7 @@ orglsegments(object, groups, display = "sites", choices = 1:3, ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
     choices = 1:3, ...)
 orglellipse(object, groups, display = "sites", kind = c("sd", "se"),
-    conf = 0.95, choices = 1:3, alpha = 0.3, col = 2, ...)
+    conf, choices = 1:3, alpha = 0.3, col = 2, ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by \code{\link{scores}}. }
@@ -53,7 +53,8 @@ orglellipse(object, groups, display = "sites", kind = c("sd", "se"),
     user. \code{w=NULL} sets equal weights to all points. }
   \item{kind}{Whether standard deviations of points (\code{"sd"}) or
     standard deviations of their averages (\code{"se"}) are used.}
-  \item{conf}{Confidence limit for ellipses, e.g., 0.95.}
+  \item{conf}{Confidence limit for ellipses, e.g., 0.95. If not given,
+    sd or se ellipses are drawn.}
   \item{col}{Colour of items, can be a vector.}
   \item{alpha}{Transparency of colour between 0.0 (fully transparent)
     and 1.0 (non-transparent).}
