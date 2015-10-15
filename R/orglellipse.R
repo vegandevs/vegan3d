@@ -18,7 +18,7 @@
                            wt = w[groups == g])
     if (kind == "se")
         for(i in seq_len(length(Cov)))
-            Cov[[i]]$cov <- Cov[[i]]$cov/Cov[[i]]$n.obs
+            Cov[[i]]$cov <- Cov[[i]]$cov * sum(Cov[[i]]$wt^2)
     ## recycle colours
     col <- rep(col, length = length(Cov))
     ## rgl::ellipse3d defaults to confidence envelopes, but we want to
