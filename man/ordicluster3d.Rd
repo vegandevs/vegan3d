@@ -77,9 +77,9 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   ## orglcluster makes ordinary rgl graphics. It accepts
   ## rgl.material() settings, and you can add elements to the
   ## open graph (for instance, bbox3d()).
-\dontrun{
-  management <- with(dune.env, as.numeric(Management))
-  orglcluster(m, cl, col=management, size = 6, lwd = 2, alpha = 0.6)
+  if (interactive() && require(rgl, quietly = TRUE)) {
+  with(dune.env, orglcluster(m, cl, col = as.numeric(Management), size = 6,
+     lwd = 2, alpha = 0.6))
   }
 }
 
