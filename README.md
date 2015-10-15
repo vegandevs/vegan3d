@@ -9,6 +9,7 @@ The package contains the following functions:
  * `ordirgl` with its support functions `orglpoints`, `orglsegments`,
    `orglellipse`, `orglspider` and `orgltext`.  These
    require **rgl** package and provide dynamic ordination graphics.
+   See a [simple example](http://cc.oulu.fi/~jarioksa/veganGL/).
 
  * **rgl** based support functions `rgl.isomap` to display `isomap`
      results, and `rgl.renyiaccum` to display `renyiaccum` results.
