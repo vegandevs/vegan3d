@@ -1,5 +1,6 @@
 \name{ordirgl}
 \alias{ordirgl}
+\alias{orglellipse}
 \alias{orglpoints}
 \alias{orgltext}
 \alias{orglsegments}
@@ -11,17 +12,21 @@
   graphs which can be rotated and zoomed into using \code{\link[rgl]{rgl}}
   package. This function works with all ordination
   results from \code{vegan} and all ordination results known by the
-  \code{\link{scores}} function. 
+  \code{\link{scores}} function. The \code{orglXXXX} functions add
+  elements to the \code{ordirgl} graph similarly as \code{ordiXXXX}
+  function in \pkg{vegan}.
 }
 \usage{
 ordirgl(object, display = "sites", choices = 1:3, type = "p", 
-        ax.col = "red", arr.col = "yellow", text, envfit, ...)
+    ax.col = "red", arr.col = "yellow", text, envfit, ...)
 orglpoints(object, display = "sites", choices = 1:3, ...)
 orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
-        adj = 0.5, ...)
+    adj = 0.5, ...)
 orglsegments(object, groups, display = "sites", choices = 1:3, ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
-        choices = 1:3, ...)
+    choices = 1:3, ...)
+orglellipse(object, groups, display = "sites", w = weights(object, display),
+    kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = 2, ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by \code{\link{scores}}. }
@@ -46,6 +51,14 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
     used automatically for \code{\link{cca}}
     and \code{\link{decorana}} results, unless undone by the
     user. \code{w=NULL} sets equal weights to all points. }
+  \item{kind}{Whether standard deviations of points (\code{"sd"}) or
+    standard deviations of their averages (\code{"se"}) are used.}
+  \item{conf}{Confidence limit for ellipses, e.g., 0.95. If not given,
+    sd or se ellipses are drawn.}
+  \item{col}{Colour of items, can be a vector corresponding to
+    \code{groups}.}
+  \item{alpha}{Transparency of colour between 0.0 (fully transparent)
+    and 1.0 (non-transparent).}
   \item{\dots}{Other parameters passed to graphical functions. }
 }
 \details{
@@ -88,9 +101,12 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
   their weighted centroid within \code{"groups"}, and in constrained
   ordination it can connect \code{"wa"} or weighted averages scores to
   corresponding \code{"lc"} or linear combination scores if
-  \code{"groups"} is missing. In addition, basic \code{rgl} functions
-  \code{\link[rgl]{rgl.points}}, \code{\link[rgl]{rgl.texts}},
-  \code{\link[rgl]{rgl.lines}} and many others can be used.
+  \code{"groups"} is missing.  Function \code{orglellipse} will draw
+  ellipses of confidence regions for \code{"groups"}.
+
+  Basic \code{rgl} functions \code{\link[rgl]{rgl.points}},
+  \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.lines}},
+  \code{\link[rgl]{bbox3d}} and many others can be used.
 
 }
  
@@ -122,8 +138,11 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
 \seealso{
   \code{\link[rgl]{rgl}}, \code{\link[rgl]{rgl.points}},
   \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.viewpoint}},
-  \code{\link[vegan]{envfit}}.
+  \code{\link[vegan]{envfit}}. These are 3D dynamic variants of
+  \pkg{vegan} functions \code{\link[vegan]{ordiplot}},
+  \code{\link[vegan]{ordispider}} and \code{\link[vegan]{ordiellipse}}.
 }
+
 \examples{
 ## Examples are not run, because they need user interaction.
 \dontrun{
