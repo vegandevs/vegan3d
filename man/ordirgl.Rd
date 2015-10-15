@@ -24,7 +24,7 @@ orgltext(object, text, display = "sites", choices = 1:3, justify = "center",
     adj = 0.5, ...)
 orglsegments(object, groups, display = "sites", choices = 1:3, ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
-    choices = 1:3, ...)
+    choices = 1:3, col = 1, ...)
 orglellipse(object, groups, display = "sites", w = weights(object, display),
     kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = 2, ...)
 }
