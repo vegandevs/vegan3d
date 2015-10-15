@@ -10,6 +10,7 @@
     ylen <- ylim[2] - ylim[1] + 1
     colorlut <- rainbow(ylen)
     col <- colorlut[1000*y-ylim[1]+1]
+    rgl.clear()
     rgl.bg(color = "white")
     rgl.surface(xp, z, y, color=col)
     y <- x[,,5] * rgl.height
