@@ -30,6 +30,7 @@
         t <- sqrt(qchisq(conf, 3))
     ## graph
     for(i in seq_len(length(Cov)))
-        plot3d(ellipse3d(Cov[[i]]$cov, centre = Cov[[i]]$center, t = t),
-               add = TRUE, alpha = alpha, col = col[i], ...)
+        if (Cov[[i]]$n.obs > 3)
+            plot3d(ellipse3d(Cov[[i]]$cov, centre = Cov[[i]]$center, t = t),
+                   add = TRUE, alpha = alpha, col = col[i], ...)
 }
