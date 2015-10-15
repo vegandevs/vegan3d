@@ -52,9 +52,7 @@ rgl.isomap(x, web = "white", ...)
   \code{\link[vegan]{scores}}.
 }
 \examples{
-\dontrun{
-## Function needs user interaction.
-
+if (interactive() && require(rgl, quietly = TRUE)) {
 data(BCI)
 dis <- vegdist(BCI)
 ord <- isomap(dis, k=5)
