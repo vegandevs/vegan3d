@@ -67,12 +67,11 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
   \code{\link[rgl]{rgl}}.  Function uses most default settings of
   underlying graphical functions, and you must consult their help
   pages to change graphics to suit your taste (\code{\link[rgl]{rgl}},
-  \code{\link[rgl]{rgl.points}},\code{\link[rgl]{rgl.texts}}).
-  Functions will display only one selected set of
-  \code{\link[vegan]{scores}}, typically either \code{"sites"} or
-  \code{"species"}, but for instance \code{\link[vegan]{cca}} also has
-  \code{"lc"} scores. In constrained ordination
-  (\code{\link[vegan]{cca}}, \code{\link[vegan]{rda}},
+  \code{\link[rgl]{rgl.material}}).  Functions will display only one
+  selected set of \code{\link[vegan]{scores}}, typically either
+  \code{"sites"} or \code{"species"}, but for instance
+  \code{\link[vegan]{cca}} also has \code{"lc"} scores. In constrained
+  ordination (\code{\link[vegan]{cca}}, \code{\link[vegan]{rda}},
   \code{\link[vegan]{capscale}}), biplot arrows and centroids are
   always displayed similarly as in two-dimensional plotting function
   \code{\link[vegan]{plot.cca}}.  Alternatively, it is possible to
@@ -85,24 +84,24 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
 
   Function \code{ordigl} makes a dynamic three-dimensional graph that
   can be rotated with mouse, and zoomed into with mouse buttons or
-  wheel (but Mac users with one-button mouse should see
-  \code{\link[rgl]{rgl.viewpoint}}, or try ctrl-button). MacOS X users
-  must start \code{X11} before calling \code{\link[rgl]{rgl}}
-  commands.  Function \code{ordirgl} uses default settings, and you
-  should consult the underlying functions
-  \code{\link[rgl]{rgl.points}}, \code{\link[rgl]{rgl.texts}} to see
-  how to control the graphics. Function \code{ordirgl} always cleans
-  its graphic window before drawing.  Functions \code{orglpoints} adds
-  points and \code{orgltext} adds text to existing \code{ordirgl}
-  windows.  In addition, function \code{orglsegments} combines points
-  within \code{"groups"} with line segments similarly as
-  \code{\link[vegan]{ordisegments}}. Function \code{orglspider} works
-  similarly as \code{\link[vegan]{ordispider}}: it connects points to
-  their weighted centroid within \code{"groups"}, and in constrained
+  wheel or touchpad gestures. Function \code{ordirgl} uses default
+  settings, and you should consult \pkg{rgl} documentation for
+  configuration, in particular see \code{\link[rgl]{rgl.material}}.
+  Function \code{ordirgl} always cleans its graphic window before
+  drawing.
+
+  Function \code{orglpoints} adds points and \code{orgltext} adds text
+  to existing \code{ordirgl} windows.  In addition, function
+  \code{orglsegments} combines points within \code{"groups"} with line
+  segments similarly as \code{\link[vegan]{ordisegments}}. Function
+  \code{orglspider} works similarly as
+  \code{\link[vegan]{ordispider}}: it connects points to their
+  weighted centroid within \code{"groups"}, and in constrained
   ordination it can connect \code{"wa"} or weighted averages scores to
   corresponding \code{"lc"} or linear combination scores if
-  \code{"groups"} is missing.  Function \code{orglellipse} will draw
-  ellipses of confidence regions for \code{"groups"}.
+  \code{"groups"} is missing.  Function \code{orglellipse} works
+  similarly as \code{\link[vegan]{ordiellipse}} and will draw ellipses
+  of confidence regions for \code{"groups"}.
 
   Basic \code{rgl} functions \code{\link[rgl]{rgl.points}},
   \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.lines}},
@@ -118,21 +117,13 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
 
 \author{Jari Oksanen }
 
-\section{Warning}{Function \code{ordirgl} uses OpenGL package
-  \code{\link[rgl]{rgl}}
-  which may not be functional in all platforms, and can crash R in some:
-  use \code{\link{save.image}} before trying \code{ordirgl}.
-  Mac users must start \code{X11} (and first install \code{X11} and some other
-  libraries) before being able to use \code{\link[rgl]{rgl}}. It seems
-  that \code{\link[rgl]{rgl.texts}} does  not always position the text
-  like supposed, and it may be safe to verify text location with
+\section{Warning}{
+  Function \code{ordirgl} uses OpenGL package \code{\link[rgl]{rgl}}
+  which may not be functional in all platforms, and can crash R in
+  some: use \code{\link{save.image}} before trying \code{ordirgl}. It
+  seems that \code{\link[rgl]{rgl.texts}} does not always position the
+  text like supposed, and it may be safe to verify text location with
   corresponding points.
-}
-
-\note{
-  The function was originally written for \pkg{rgl} version
-  0.64-0, but its user interface was upgraded to 0.65-0. However, more
-  modern features of \pkg{rgl} are not used.  
 }
 
 \seealso{
@@ -144,11 +135,17 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
 }
 
 \examples{
-## Examples are not run, because they need user interaction.
-\dontrun{
-ordirgl(ord, size=2)
-ordirgl(ord, display = "species", type = "t")
-rgl.quit()
+
+if (interactive() && require(rgl, quietly = TRUE)) {
+data(mite, mite.env)
+ord <- rda(decostand(mite, "hellinger"))
+ordirgl(ord, size=4, col = "yellow")
+orgltext(ord, display = "species")
+## show groups of Shrub abundance
+with(mite.env, ordirgl(ord, col = as.numeric(Shrub), size = 2, scaling = 1))
+with(mite.env, orglspider(ord, Shrub, col = 1:3, scaling = 1))
+with(mite.env, orglellipse(ord, Shrub, col = 1:3, kind = "se", conf = 0.95,
+    scaling = 1))
 }
 }
 \keyword{ hplot }
