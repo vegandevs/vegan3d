@@ -15,6 +15,8 @@
     y <- reorder(cluster, ord[,2], agglo.FUN = "mean")$value
     xyz <- cbind(x, y, "height" = cluster$height)
     ## make line colour the mean of point colours
+    if (is.factor(col))
+        col <- as.numeric(col)
     col <- rep(col, length = nrow(ord))
     lcol <- col2rgb(col)/255
     r <- reorder(cluster, lcol[1,], agglo.FUN = "mean")$value
@@ -65,6 +67,8 @@
     ## adjust height
     z <- mean(c(diff(range(x)), diff(range(y))))/diff(range(z)) * z
     ## make line colour the mean of point colours
+    if (is.factor(col))
+        col <- as.numeric(col)
     col <- rep(col, length = nrow(p))
     lcol <- col2rgb(col)/255
     r <- reorder(cluster, lcol[1,], agglo.FUN = "mean")$value
