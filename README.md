@@ -18,9 +18,15 @@ The package contains the following functions:
    **scatterplot3d** package.
 
  * `ordicluster3d` and `orglcluster` functions to display a coloured
-    dendrogram tree over a 2D ordination plane. The first is a
+    dendrogram tree over a 2D plane. The first is a
     static function based on **scatterplot3d** and the latter a
-    dynamic spinnable plot based on **rgl**.
+    dynamic spinnable plot based on **rgl**. The method was initially
+    designed for showing dendrograms over ordination plane like 
+    e.g.,  [BCI plots over CA](http://cc.oulu.fi/~jarioksa/WebGL/BCIcca/),
+    but it can use other planes, like 
+    [the original sampling grid](http://cc.oulu.fi/~jarioksa/WebGL/BCIgrid/),
+    both coloured and labelled by the dominant tree species. Here also a
+    vegetation [clustering in the Palaearctic](http://cc.oulu.fi/~jarioksa/sibir).
 
 Special plotting functions based on **lattice** and **tcltk** packages
 are still in **vegan**. **ggplot2**-based functions are in
