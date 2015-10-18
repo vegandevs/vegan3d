@@ -7,7 +7,10 @@
                 ...)
     if (ncol(x) < 3) 
         stop("3D display needs three dimensions...")
+    ## clear window and set isometric aspect ratio
     rgl.clear()
+    op <- aspect3d("iso")
+    on.exit(aspect3d(op))
     if (type == "p")  {
         ## default radius
         if (missing(radius))
