@@ -1,14 +1,18 @@
-"ordirgl" <-
-    function (object, display = "sites", choices = 1:3, type = "p", 
-              ax.col = "red", arr.col = "yellow", text, envfit, ...) 
+`ordirgl` <-
+    function (object, display = "sites", choices = 1:3, type = "p",
+              ax.col = "red", arr.col = "yellow", radius, text, envfit,
+              ...) 
 {
     x <- scores(object, display = display, choices = choices, 
                 ...)
     if (ncol(x) < 3) 
         stop("3D display needs three dimensions...")
     rgl.clear()
-    if (type == "p") 
-        rgl.points(x[, 1], x[, 2], x[, 3], ...)
+    if (type == "p")  {
+        if (missing(radius))
+            radius <- max(apply(x, 2, function(z) diff(range(z))))/100
+        rgl.spheres(x, radius = radius, ...)
+    }
     else if (type == "t") {
         if (missing(text)) 
             text <- rownames(x)

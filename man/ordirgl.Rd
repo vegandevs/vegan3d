@@ -18,8 +18,8 @@
 }
 \usage{
 ordirgl(object, display = "sites", choices = 1:3, type = "p", 
-    ax.col = "red", arr.col = "yellow", text, envfit, ...)
-orglpoints(object, display = "sites", choices = 1:3, ...)
+    ax.col = "red", arr.col = "yellow", radius, text, envfit, ...)
+orglpoints(object, display = "sites", choices = 1:3, radius, ...)
 orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
     adj = 0.5, ...)
 orglsegments(object, groups, display = "sites", choices = 1:3, ...)
@@ -39,6 +39,7 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
     origin).}
   \item{arr.col}{Colour of biplot \code{\link{arrows}} and centroids of
     environmental variables. }
+  \item{radius}{Size of points in the units of ordination scores.}
   \item{text}{Text to override the default with \code{type = "t"}.}
   \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
     displayed in the graph.}
