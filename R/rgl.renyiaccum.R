@@ -11,7 +11,7 @@
     colorlut <- rainbow(ylen)
     col <- colorlut[1000*y-ylim[1]+1]
     rgl.clear()
-    rgl.bg(color = "white")
+    ## rgl.bg(color = "white")
     rgl.surface(xp, z, y, color=col)
     y <- x[,,5] * rgl.height
     ##rgl.surface(xp,z,y,color="grey", alpha=0.3)
