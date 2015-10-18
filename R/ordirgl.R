@@ -10,6 +10,9 @@
     ## clear window and set isometric aspect ratio
     rgl.clear()
     op <- aspect3d("iso")
+    if (!all(op$scale == 1))
+        warning("set isometric aspect ratio, previously was ",
+                paste(round(op$scale, 3), collapse=", "))
     ## on.exit(aspect3d(op)) # Fails on.exit: rgl plot is still open
     if (type == "p")  {
         ## default radius
