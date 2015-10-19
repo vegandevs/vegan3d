@@ -10,10 +10,10 @@ importFrom(graphics, arrows, points, segments, text)
 importFrom(stats, weighted.mean, weights, as.hclust, reorder, cov.wt, qchisq)
 
 ## export what we got
-export(ordicluster3d,
+export(orditree3d,
        ordiplot3d,
        ordirgl,
-       orglcluster,
+       ordirgltree,
        orglellipse,
        orglpoints,
        orglsegments,
