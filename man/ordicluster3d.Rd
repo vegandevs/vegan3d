@@ -1,5 +1,5 @@
-\name{ordicluster3d}
-\alias{ordicluster3d}
+\name{orditree3d}
+\alias{orditree3d}
 \alias{orglcluster}
 
 \title{
@@ -13,7 +13,7 @@ Draw Cluster Tree over an Ordination Plane
 }
 
 \usage{
-ordicluster3d(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
+orditree3d(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
     col = "blue", type = "p", ...)
 orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
     col = "blue", type = "p", ...)
@@ -48,13 +48,13 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 }
 
 \details{
-  \code{ordicluster3d} uses \pkg{scatterplot3d} package to draw a
+  \code{orditree3d} uses \pkg{scatterplot3d} package to draw a
   static 3D plot of the dendrogram over the ordination, and
   \code{orglcluster} uses \pkg{rgl} to make a dynamic, spinnable plot.
 }
 
 \value{
-  Function \code{ordicluster3d} returns invisibly a
+  Function \code{orditree3d} returns invisibly a
   \code{\link[scatterplot3d]{scatterplot3d}} result object amended
   with items \code{leaves} and \code{nodes} that give the projected
   coordinates of ordination scores and internal nodes. Function
@@ -73,7 +73,7 @@ orglcluster(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   d <- vegdist(dune)
   m <- metaMDS(d)
   cl <- hclust(d, "aver")
-  ordicluster3d(m, cl, pch=16, col=cutree(cl, 3))
+  orditree3d(m, cl, pch=16, col=cutree(cl, 3))
   ## orglcluster makes ordinary rgl graphics. It accepts
   ## rgl.material() settings, and you can add elements to the
   ## open graph (for instance, bbox3d()).

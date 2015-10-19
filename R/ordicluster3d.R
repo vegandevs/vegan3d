@@ -1,4 +1,4 @@
-`ordicluster3d` <-
+`orditree3d` <-
     function(ord, cluster, prune = 0, display = "sites", choices = c(1,2),
              col = "blue", type = "p", ...)
 {
