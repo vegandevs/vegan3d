@@ -17,7 +17,7 @@ The package contains the following functions:
  * `ordiplot3d` for static 3D ordination diagrams. This requires
    **scatterplot3d** package.
 
- * `ordicluster3d` and `orglcluster` functions to display a coloured
+ * `orditree3d` and `ordirgltree` functions to display a coloured
     dendrogram tree over a 2D plane. The first is a
     static function based on **scatterplot3d** and the latter a
     dynamic spinnable plot based on **rgl**. The method was initially
