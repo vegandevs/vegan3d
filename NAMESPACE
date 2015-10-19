@@ -13,7 +13,7 @@ importFrom(stats, weighted.mean, weights, as.hclust, reorder, cov.wt, qchisq)
 export(orditree3d,
        ordiplot3d,
        ordirgl,
-       orglcluster,
+       ordirgltree,
        orglellipse,
        orglpoints,
        orglsegments,
