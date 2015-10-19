@@ -67,12 +67,20 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
   Function \code{ordirgl} plots dynamic graphics using OpenGL with
   \code{\link[rgl]{rgl}}.  Function uses most default settings of
   underlying graphical functions, and you must consult their help
-  pages to change graphics to suit your taste (\code{\link[rgl]{rgl}},
-  \code{\link[rgl]{rgl.material}}).  Functions will display only one
-  selected set of \code{\link[vegan]{scores}}, typically either
-  \code{"sites"} or \code{"species"}, but for instance
-  \code{\link[vegan]{cca}} also has \code{"lc"} scores. In constrained
-  ordination (\code{\link[vegan]{cca}}, \code{\link[vegan]{rda}},
+  pages for configuration. Texts are plotted with
+  \code{\link[rgl]{rgl.texts}} and points with
+  \code{\link[rgl]{rgl.spheres}} which both have their own
+  configuration switches and also can be modified with
+  \code{\link[rgl]{rgl.material}}.  The point size is directly
+  defined by \code{radius} argument in \code{\link[rgl]{rgl.spheres}}
+  in the units of ordination scores, but \code{ordirgl} determines a
+  default size which can be further modiefied by \code{cex}.
+
+  Functions will display only one selected set of
+  \code{\link[vegan]{scores}}, typically either \code{"sites"} or
+  \code{"species"}, but for instance \code{\link[vegan]{cca}} also has
+  \code{"lc"} scores. In constrained ordination
+  (\code{\link[vegan]{cca}}, \code{\link[vegan]{rda}},
   \code{\link[vegan]{capscale}}), biplot arrows and centroids are
   always displayed similarly as in two-dimensional plotting function
   \code{\link[vegan]{plot.cca}}.  Alternatively, it is possible to
