@@ -5,9 +5,9 @@ import(rgl)
 ## scatterplot3d only has one function
 import(scatterplot3d)
 ## explicit imports for base R functions
-  importFrom(grDevices, rainbow, col2rgb, rgb)
-  importFrom(graphics, arrows, points, segments, text)
-  importFrom(stats, weighted.mean, weights, as.hclust, reorder)
+importFrom(grDevices, rainbow, col2rgb, rgb)
+importFrom(graphics, arrows, points, segments, text)
+importFrom(stats, weighted.mean, weights, as.hclust, reorder, cov.wt, qchisq)
 
 ## export what we got
 export(ordicluster3d,
