@@ -5,6 +5,8 @@
 \alias{orgltext}
 \alias{orglsegments}
 \alias{orglspider}
+\alias{orglspantree}
+\alias{orglcluster}
 
 \title{Three-Dimensional Dynamic Ordination Graphics }
 \description{
@@ -27,6 +29,10 @@ orglspider(object, groups, display = "sites", w = weights(object, display),
     choices = 1:3, col = 1, ...)
 orglellipse(object, groups, display = "sites", w = weights(object, display),
     kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = 2, ...)
+orglspantree(object, spantree, display = "sites", choices = 1:3, col = 1,
+    ...)
+orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
+    col = 1, ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by \code{\link{scores}}. }
@@ -60,6 +66,13 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
     \code{groups}.}
   \item{alpha}{Transparency of colour between 0.0 (fully transparent)
     and 1.0 (non-transparent).}
+  \item{spantree}{A minimum spanning tree object from \pkg{vegan}
+    \code{\link[vegan]{spantree}}.}
+  \item{cluster}{Result of hierarchic cluster analysis, such as
+    \code{\link{hclust}} or \code{\link[cluster]{agnes}}.}
+  \item{prune}{Number of upper levels hierarchies removed from the
+    tree. If \code{prune} > 0, tree will be cut into \code{prune + 1}
+    disconnected trees.}
   \item{\dots}{Other parameters passed to graphical functions. }
 }
 \details{
@@ -110,7 +123,13 @@ orglellipse(object, groups, display = "sites", w = weights(object, display),
   corresponding \code{"lc"} or linear combination scores if
   \code{"groups"} is missing.  Function \code{orglellipse} works
   similarly as \code{\link[vegan]{ordiellipse}} and will draw ellipses
-  of confidence regions for \code{"groups"}.
+  of confidence regions for \code{"groups"}. Function
+  \code{orglspantree} adds a minimum spanning tree from
+  \code{\link[vegan]{spantree}}. This a 3D equivalent of
+  \code{\link[vegan]{lines.spantree}}.  Function \code{orglcluster}
+  adds a hierarchic cluster tree from \code{\link{hclust}} or related
+  functions. This is a 3D equivalent of
+  \code{\link[vegan]{ordicluster}}.
 
   Basic \code{rgl} functions \code{\link[rgl]{rgl.points}},
   \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.lines}},
