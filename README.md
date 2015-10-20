@@ -6,10 +6,11 @@ and for static 3D plots based on **scatterplot3d** package.
 
 The package contains the following functions:
 
- * `ordirgl` with its support functions `orglpoints`, `orglsegments`,
-   `orglellipse`, `orglspider` and `orgltext`.  These
+ * `ordirgl` with its support functions `orglpoints`, `orgltext`, `orglsegments`,
+   `orglellipse`, `orglspider`, `orglcluster` and `orglspantree`.  These
    require **rgl** package and provide dynamic ordination graphics.
-   See a [simple example](http://cc.oulu.fi/~jarioksa/veganGL/).
+   See a [simple example](http://cc.oulu.fi/~jarioksa/veganGL/). In general,
+   the `orglXXXX` functions are similar as 2D `ordiXXXX` functions in **vegan**. 
 
  * **rgl** based support functions `rgl.isomap` to display `isomap`
      results, and `rgl.renyiaccum` to display `renyiaccum` results.
