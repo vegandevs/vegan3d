@@ -15,6 +15,8 @@
     col <- col2rgb(col)/255
     ## lines
     for (i in 1:length(k)) {
+        if (is.na(k[i])) # skip NA links: disconnected spantree
+            next
         one <- x[i+1,]
         two <- x[k[i],]
         lcol <- rgb(t(col[, i+1] + col[,k[i]])/2)
