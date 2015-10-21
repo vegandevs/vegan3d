@@ -24,7 +24,7 @@ ordirgl(object, display = "sites", choices = 1:3, type = "p",
 orglpoints(object, display = "sites", choices = 1:3, radius, ...)
 orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
     adj = 0.5, ...)
-orglsegments(object, groups, display = "sites", choices = 1:3, ...)
+orglsegments(object, groups, display = "sites", choices = 1:3, col = 1, ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
     choices = 1:3, col = 1, ...)
 orglellipse(object, groups, display = "sites", w = weights(object, display),
