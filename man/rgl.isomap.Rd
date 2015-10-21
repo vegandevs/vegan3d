@@ -11,18 +11,17 @@
 \usage{
 rgl.isomap(x, web = "white", ...)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{x}{
-    Result from \code{\link[vegan]{isomap}}.
-}
-  \item{web}{
-    Colour of the web.
-}
-  \item{\dots}{
-    Other parameters passed to \code{\link{ordirgl}} and 
-    \code{\link[vegan]{scores}}.
-}
+
+  \item{x}{Result from \code{\link[vegan]{isomap}}.}
+
+  \item{web}{Colour of the web. If this is a vector matching the number
+    of points, the colour of links is a mixture of joined points.}
+
+  \item{\dots}{ Other parameters passed to \code{\link{ordirgl}} and
+    \code{\link[vegan]{scores}}.}
+
 }
 \details{
   
@@ -55,8 +54,10 @@ rgl.isomap(x, web = "white", ...)
 if (interactive() && require(rgl, quietly = TRUE)) {
 data(BCI)
 dis <- vegdist(BCI)
-ord <- isomap(dis, k=5)
-rgl.isomap(ord, size=4, color="hotpink")
+## colour points and links by the dominant species
+dom <- factor(make.cepnames(names(BCI))[apply(BCI, 1, which.max)])
+ord <- isomap(dis, k=3)
+rgl.isomap(ord, col = as.numeric(dom), web = as.numeric(dom), lwd=2)
 }
 }
 
