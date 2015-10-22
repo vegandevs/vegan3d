@@ -1,5 +1,6 @@
 \name{ordiplot3d}
 \alias{ordiplot3d}
+\alias{scores.ordiplot3d}
 
 \title{Three-Dimensional Ordination Graphics }
 \description{
@@ -144,6 +145,12 @@ plot(pl3$envfit.convert(ef), at = pl3$origin)
 ### envfit.convert() also handles different 'choices' of axes
 pl3 <- ordiplot3d(ord, choices = c(1,3,2))
 plot(pl3$envfit.convert(ef), at = pl3$origin)
+### vegan::ordiXXXX functions can add items to the plot
+ord <- cca(dune)
+pl4 <- with(dune.env, ordiplot3d(ord, col = Management, pch=16))
+with(dune.env, ordiellipse(pl4, Management, draw = "poly", col = 1:4,
+  alpha = 60))
+with(dune.env, ordispider(pl4, Management, col = 1:4, label = TRUE))
 }
 \keyword{ hplot }
 
