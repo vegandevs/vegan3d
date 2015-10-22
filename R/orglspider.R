@@ -1,6 +1,6 @@
-"orglspider" <-
+`orglspider` <-
     function (object, groups, display = "sites",
-              w = weights(object, display), choices = 1:3, col = 1, ...) 
+              w = weights(object, display), choices = 1:3, col = "black", ...)
 {
     weights.default <- function(object, ...) NULL
     if (inherits(object, "cca") && missing(groups)) {
@@ -18,6 +18,8 @@
         if (is.null(w)) 
             w <- rep(1, nrow(pts))
         inds <- names(table(groups))
+        if (is.factor(col))
+            col <- as.numeric(col)
         col <- rep(col, length = length(inds))
         names(col) <- inds
         for (is in inds) {

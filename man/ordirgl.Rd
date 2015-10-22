@@ -24,15 +24,16 @@ ordirgl(object, display = "sites", choices = 1:3, type = "p", col = "black",
 orglpoints(object, display = "sites", choices = 1:3, radius, col = "black", ...)
 orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
     adj = 0.5, col = "black", ...)
-orglsegments(object, groups, display = "sites", choices = 1:3, col = 1, ...)
+orglsegments(object, groups, display = "sites", choices = 1:3,
+    col = "black", ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
-    choices = 1:3, col = 1, ...)
+    choices = 1:3, col = "black", ...)
 orglellipse(object, groups, display = "sites", w = weights(object, display),
-    kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = 2, ...)
-orglspantree(object, spantree, display = "sites", choices = 1:3, col = 1,
-    ...)
+    kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = "red", ...)
+orglspantree(object, spantree, display = "sites", choices = 1:3,
+    col = "black", ...)
 orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
-    col = 1, ...)
+    col = "black", ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by \code{\link{scores}}. }

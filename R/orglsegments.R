@@ -1,8 +1,11 @@
 `orglsegments` <-
-    function (object, groups, display = "sites", choices = 1:3, col = 1, ...) 
+    function (object, groups, display = "sites", choices = 1:3, col = "black",
+              ...)
 {
     pts <- scores(object, display = display, choices = choices, ...)
     inds <- names(table(groups))
+    if (is.factor(col))
+        col <- as.numeric(col)
     col <- rep(col, length = length(inds))
     names(col) <- inds
     for (is in inds) {
