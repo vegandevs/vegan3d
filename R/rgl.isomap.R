@@ -5,7 +5,7 @@
     z <- scores(x, ...)
     net <- x$net
     ## skip if web = NA
-    if (!is.na(web)) {
+    if (any(!is.na(web))) {
         ## web can be a vector for points (or not): recycle
         web <- rep(web, length = nrow(z))
         if (is.factor(web))
