@@ -9,8 +9,9 @@
   results known by \code{\link[vegan]{scores}} function. 
 }
 \usage{
-ordiplot3d(object, display = "sites", choices = 1:3, ax.col = 2,
-        arr.len = 0.1, arr.col = 4, envfit, xlab, ylab, zlab, ...)
+ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
+    ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
+    xlab, ylab, zlab, ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by 
@@ -18,6 +19,8 @@ ordiplot3d(object, display = "sites", choices = 1:3, ax.col = 2,
   \item{display}{Display \code{"sites"} or \code{"species"} or other
     ordination object recognized by \code{\link[vegan]{scores}}. }
   \item{choices}{Selected three axes.}
+  \item{col}{Colours of points. Can be a vector, and factors are
+    interpreted as their internal numerical codes.}
   \item{ax.col}{Axis colour (concerns only the crossed axes through the
     origin).}
   \item{arr.len}{'Length' (width) of arrow head passed to
