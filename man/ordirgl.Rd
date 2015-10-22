@@ -22,8 +22,8 @@
 ordirgl(object, display = "sites", choices = 1:3, type = "p", col = "black",
     ax.col = "red", arr.col = "yellow", radius, text, envfit, ...)
 orglpoints(object, display = "sites", choices = 1:3, radius, col = "black", ...)
-orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
-    adj = 0.5, col = "black", ...)
+orgltext(object, text, display = "sites", choices = 1:3, adj = 0.5,
+    col = "black", ...)
 orglsegments(object, groups, display = "sites", choices = 1:3,
     col = "black", ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
@@ -50,9 +50,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \item{text}{Text to override the default with \code{type = "t"}.}
   \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
     displayed in the graph.}
-  \item{justify, adj}{Text justification passed to
-    \code{\link[rgl]{rgl.texts}}. One of these is used depending on the
-    version of \pkg{rgl} installed.}
+  \item{adj}{Text justification passed to \code{\link[rgl]{rgl.texts}}.}
   \item{groups}{Factor giving the groups for which the graphical item is
     drawn.}
   \item{w}{Weights used to find the average within group. Weights are

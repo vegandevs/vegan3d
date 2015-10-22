@@ -1,6 +1,6 @@
 `orgltext` <-
     function (object, text, display = "sites", choices = 1:3,
-              justify = "center", adj = 0.5, col = "black", ...)
+              adj = 0.5, col = "black", ...)
 {
     x <- scores(object, display = display, choices = choices, 
                 ...)
