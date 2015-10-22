@@ -1,18 +1,23 @@
 `ordiplot3d` <-
-    function (object, display = "sites", choices = 1:3, ax.col = 2, 
-              arr.len = 0.1, arr.col = 4, envfit, xlab, ylab, zlab, ...) 
+    function (object, display = "sites", choices = 1:3, col = "black",
+              ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
+              xlab, ylab, zlab, ...)
 {
     x <- scores(object, display = display, choices = choices, ...)
     if (missing(xlab)) xlab <- colnames(x)[1]
     if (missing(ylab)) ylab <- colnames(x)[2]
     if (missing(zlab)) zlab <- colnames(x)[3]
+    if (is.factor(col))
+        col = as.numeric(col)
+    col <- rep(col, length = nrow(x))
     ### scatterplot3d does not allow setting equal aspect ratio. We
     ### try to compensate this by setting equal limits for all axes
     ### and hoping the graph is more or less square so that the lines
     ### come correctly out.
     rnge <- apply(x, 2, range)
     scl <- c(-0.5, 0.5) * max(apply(rnge, 2, diff))
-    pl <- vegan:::ordiArgAbsorber(x[, 1], x[, 2], x[, 3],  
+    pl <- vegan:::ordiArgAbsorber(x[, 1], x[, 2], x[, 3],
+                          color = col,
                           xlab = xlab, ylab = ylab, zlab = zlab,
                           xlim = mean(rnge[,1]) + scl,
                           ylim = mean(rnge[,2]) + scl,

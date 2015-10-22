@@ -1,7 +1,7 @@
 ### Add lines from vegan::spantree object to an ordirgl plot
 `orglspantree` <-
-    function(object, spantree, display = "sites", choices = 1:3, col = 1,
-             ...)
+    function(object, spantree, display = "sites", choices = 1:3,
+             col = "black", ...)
 {
     if (!inherits(spantree, "spantree"))
         stop("'spantree' must be a result of vegan::spantree() function")
@@ -28,12 +28,14 @@
 
 `orglcluster` <-
     function(object, cluster, prune = 0, display = "sites",
-             choices = 1:3, col = 1, ...)
+             choices = 1:3, col = "black", ...)
 {
     if (!inherits(cluster, "hclust"))
         cluster <- as.hclust(cluster)
     x <- scores(object, display = "sites", choices = choices, ...)
-    ## recycle colours and split to rgb 0..1
+    ## recycle colours if needed
+    if (is.factor(col))
+        col <- as.numeric(col)
     col <- rep(col, length = nrow(x))
     ## (Ab)use vegan:::reorder.hclust to get the coordinates and
     ## colours of internal nodes

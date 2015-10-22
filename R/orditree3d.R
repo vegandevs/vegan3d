@@ -1,6 +1,6 @@
 `orditree3d` <-
     function(ord, cluster, prune = 0, display = "sites", choices = c(1,2),
-             col = "blue", type = "p", ...)
+             col = "blue", text, type = "p", ...)
 {
     ## ordination scores in 2d: leaves
     ord <- scores(ord, choices = choices, display = display, ...)
@@ -27,8 +27,11 @@
     pl <- scatterplot3d(rbind(ord, xyz), type = "n")
     if (type == "p")
         pl$points3d(ord, col = col, ...)
-    else if (type == "t")
-        text(pl$xyz.convert(ord), rownames(ord), col = col, ...)
+    else if (type == "t") {
+        if (missing(text))
+            text <- rownames(ord)
+        text(pl$xyz.convert(ord), labels = text, col = col, ...)
+    }
     ## project leaves and nodes to 2d
     leaf <- pl$xyz.convert(ord)
     node <- pl$xyz.convert(xyz)
@@ -53,7 +56,7 @@
 
 `ordirgltree` <-
     function(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
-             col = "blue", type = "p", ...)
+             col = "blue", text, type = "p", ...)
 {
     p <- cbind(scores(ord, choices = choices, display = display, ...), 0)
     if (ncol(p) != 3)
@@ -79,8 +82,11 @@
     rgl.clear()
     if (type == "p")
         rgl.points(p, col = col, ...)
-    else if (type == "t")
-        rgl.texts(p, text = rownames(p), col = col, ...)
+    else if (type == "t") {
+        if (missing(text))
+            text <- rownames(p)
+        rgl.texts(p, text = text, col = col, ...)
+    }
     for (i in seq_len(nrow(merge) - prune))
         for(j in 1:2)
             if (merge[i,j] < 0)

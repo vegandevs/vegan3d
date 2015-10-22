@@ -14,9 +14,9 @@ Draw Cluster Tree over an Ordination Plane
 
 \usage{
 orditree3d(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
-    col = "blue", type = "p", ...)
+    col = "blue", text, type = "p", ...)
 ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
-    col = "blue", type = "p", ...)
+    col = "blue", text, type = "p", ...)
 }
 
 \arguments{
@@ -40,8 +40,11 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
     for the points, text and terminal branches. The colour of internal
     branches is a mixture of connected leaves.}
 
+  \item{text}{Text to replace the default of item labels when
+    \code{type = "t"}. }
+
   \item{type}{Display of leaves: \code{"p"} for points, \code{"t"} for
-    item rownames of scores, and \code{"n"} for no display.}
+    text, and \code{"n"} for no display.}
 
   \item{\dots}{ Arguments passed to \code{\link[vegan]{scores}} and
     graphical functions.}

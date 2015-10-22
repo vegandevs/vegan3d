@@ -1,7 +1,7 @@
 `ordirgl` <-
     function (object, display = "sites", choices = 1:3, type = "p",
-              ax.col = "red", arr.col = "yellow", radius, text, envfit,
-              ...) 
+              col = "black", ax.col = "red", arr.col = "yellow", radius,
+              text, envfit, ...)
 {
     x <- scores(object, display = display, choices = choices, 
                 ...)
@@ -13,6 +13,10 @@
     if (!all(op$scale == 1))
         warning("set isometric aspect ratio, previously was ",
                 paste(round(op$scale, 3), collapse=", "))
+    ## colors to a vector, factors to numeric
+    if (is.factor(col))
+        col <- as.numeric(col)
+    col <- rep(col, length = nrow(x))
     ## on.exit(aspect3d(op)) # Fails on.exit: rgl plot is still open
     if (type == "p")  {
         ## default radius
@@ -22,12 +26,12 @@
         cex <- match.call(expand.dots = FALSE)$...$cex
         if (!is.null(cex))
             radius <- cex * radius
-        rgl.spheres(x, radius = radius, ...)
+        rgl.spheres(x, radius = radius, col = col,  ...)
     }
     else if (type == "t") {
         if (missing(text)) 
             text <- rownames(x)
-        rgl.texts(x[, 1], x[, 2], x[, 3], text, adj = 0.5, ...)
+        rgl.texts(x[, 1], x[, 2], x[, 3], text, adj = 0.5, col = col,  ...)
     }
     rgl.lines(range(x[, 1]), c(0, 0), c(0, 0), col = ax.col)
     rgl.lines(c(0, 0), range(x[, 2]), c(0, 0), col = ax.col)

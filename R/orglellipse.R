@@ -1,7 +1,7 @@
 `orglellipse` <-
     function(object, groups, display = "sites", w = weights(object, display),
              kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3,
-             col = 2, ...)
+             col = "red", ...)
 {
     weights.default <- function(object, ...) NULL
     kind <- match.arg(kind)
@@ -20,6 +20,8 @@
         for(i in seq_len(length(Cov)))
             Cov[[i]]$cov <- Cov[[i]]$cov * sum(Cov[[i]]$wt^2)
     ## recycle colours
+    if (is.factor(col))
+        col <- as.numeric(col)
     col <- rep(col, length = length(Cov))
     ## rgl::ellipse3d defaults to confidence envelopes, but we want to
     ## default to sd/se and only use confidence ellipses if conf is

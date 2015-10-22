@@ -19,20 +19,21 @@
   function in \pkg{vegan}.
 }
 \usage{
-ordirgl(object, display = "sites", choices = 1:3, type = "p", 
+ordirgl(object, display = "sites", choices = 1:3, type = "p", col = "black",
     ax.col = "red", arr.col = "yellow", radius, text, envfit, ...)
-orglpoints(object, display = "sites", choices = 1:3, radius, ...)
-orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
-    adj = 0.5, ...)
-orglsegments(object, groups, display = "sites", choices = 1:3, ...)
+orglpoints(object, display = "sites", choices = 1:3, radius, col = "black", ...)
+orgltext(object, text, display = "sites", choices = 1:3, adj = 0.5,
+    col = "black", ...)
+orglsegments(object, groups, display = "sites", choices = 1:3,
+    col = "black", ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
-    choices = 1:3, col = 1, ...)
+    choices = 1:3, col = "black", ...)
 orglellipse(object, groups, display = "sites", w = weights(object, display),
-    kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = 2, ...)
-orglspantree(object, spantree, display = "sites", choices = 1:3, col = 1,
-    ...)
+    kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = "red", ...)
+orglspantree(object, spantree, display = "sites", choices = 1:3,
+    col = "black", ...)
 orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
-    col = 1, ...)
+    col = "black", ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by \code{\link{scores}}. }
@@ -49,9 +50,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \item{text}{Text to override the default with \code{type = "t"}.}
   \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
     displayed in the graph.}
-  \item{justify, adj}{Text justification passed to
-    \code{\link[rgl]{rgl.texts}}. One of these is used depending on the
-    version of \pkg{rgl} installed.}
+  \item{adj}{Text justification passed to \code{\link[rgl]{rgl.texts}}.}
   \item{groups}{Factor giving the groups for which the graphical item is
     drawn.}
   \item{w}{Weights used to find the average within group. Weights are
