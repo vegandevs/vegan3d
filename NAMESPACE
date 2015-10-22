@@ -23,4 +23,5 @@ export(orditree3d,
        orgltext,
        rgl.isomap,
        rgl.renyiaccum)
-
+## S3 methods
+S3method(scores, ordiplot3d)
