@@ -19,11 +19,11 @@
   function in \pkg{vegan}.
 }
 \usage{
-ordirgl(object, display = "sites", choices = 1:3, type = "p", 
+ordirgl(object, display = "sites", choices = 1:3, type = "p", col = "black",
     ax.col = "red", arr.col = "yellow", radius, text, envfit, ...)
-orglpoints(object, display = "sites", choices = 1:3, radius, ...)
+orglpoints(object, display = "sites", choices = 1:3, radius, col = "black", ...)
 orgltext(object, text, display = "sites", choices = 1:3, justify = "center", 
-    adj = 0.5, ...)
+    adj = 0.5, col = "black", ...)
 orglsegments(object, groups, display = "sites", choices = 1:3, col = 1, ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
     choices = 1:3, col = 1, ...)
