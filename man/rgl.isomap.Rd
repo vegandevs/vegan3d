@@ -16,8 +16,9 @@ rgl.isomap(x, web = "white", ...)
 
   \item{x}{Result from \code{\link[vegan]{isomap}}.}
 
-  \item{web}{Colour of the web. If this is a vector matching the number
-    of points, the colour of links is a mixture of joined points.}
+  \item{web}{Colour of the web. If this is a vector matching the
+    number of points, the colour of links is a mixture of joined
+    points. \code{NA} skips drawing the web.}
 
   \item{\dots}{ Other parameters passed to \code{\link{ordirgl}} and
     \code{\link[vegan]{scores}}.}
