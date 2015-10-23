@@ -1,8 +1,17 @@
 `orglsegments` <-
-    function (object, groups, display = "sites", choices = 1:3, col = "black",
-              ...)
+    function (object, groups, order.by, display = "sites", choices = 1:3,
+              col = "black", ...)
 {
     pts <- scores(object, display = display, choices = choices, ...)
+    ## order points along segments
+    if (!missing(order.by)) {
+        if (length(order.by) != nrow(pts))
+            stop(gettextf("the length of order.by (%d) does not match the number of points (%d)",
+                          length(order.by), nrow(pts)))
+        ord <- order(order.by)
+        pts <- pts[ord,]
+        groups <- groups[ord]
+    }
     inds <- names(table(groups))
     if (is.factor(col))
         col <- as.numeric(col)
