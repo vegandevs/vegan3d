@@ -24,7 +24,7 @@ ordirgl(object, display = "sites", choices = 1:3, type = "p", col = "black",
 orglpoints(object, display = "sites", choices = 1:3, radius, col = "black", ...)
 orgltext(object, text, display = "sites", choices = 1:3, adj = 0.5,
     col = "black", ...)
-orglsegments(object, groups, display = "sites", choices = 1:3,
+orglsegments(object, groups, order.by, display = "sites", choices = 1:3,
     col = "black", ...)
 orglspider(object, groups, display = "sites", w = weights(object, display),
     choices = 1:3, col = "black", ...)
@@ -53,6 +53,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \item{adj}{Text justification passed to \code{\link[rgl]{rgl.texts}}.}
   \item{groups}{Factor giving the groups for which the graphical item is
     drawn.}
+  \item{order.by}{Order points by this variable within \code{groups}.}
   \item{w}{Weights used to find the average within group. Weights are
     used automatically for \code{\link{cca}}
     and \code{\link{decorana}} results, unless undone by the
