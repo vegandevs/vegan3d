@@ -3,7 +3,7 @@
 \alias{ordirgltree}
 
 \title{
-Draw Cluster Tree over an Ordination Plane
+Draw Cluster Tree over a Plane
 }
 
 \description{
@@ -20,8 +20,9 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 }
 
 \arguments{
-  \item{ord}{
-    An ordination object or an \code{\link[vegan]{ordiplot}} object.}
+
+  \item{ord}{An ordination object or an \code{\link[vegan]{ordiplot}}
+    object or any other structure defining a 2D plane.}
 
   \item{cluster}{Result of hierarchic cluster analysis, such as
     \code{\link{hclust}} or \code{\link[cluster]{agnes}}.}
@@ -69,8 +70,12 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 }
 
 \seealso{
-  \code{\link[vegan]{ordicluster}} in \pkg{vegan}.
+
+  \code{\link{orglcluster}} and \code{\link[vegan]{ordicluster}} (in
+  \pkg{vegan}).
+
 }
+
 \examples{
   data(dune, dune.env)
   d <- vegdist(dune)
