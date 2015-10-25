@@ -83,8 +83,8 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   starts a new plot. The function was designed for ordination methods
   in the \pkg{vegan} package, but it can handle any method known to
   \pkg{vegan} \code{\link[vegan]{scores}} function, or to any three
-  column matrix. The \code{orgl}-prefixed functions can add items to
-  the opened \pkg{rgl} graphics device.
+  column matrix. The \code{orgl}-prefixed functions add items to the
+  opened \pkg{rgl} graphics device.
 
   Function \code{ordirgl} uses most default settings of underlying
   graphical functions in \code{rgl}. It plots only one set of points,

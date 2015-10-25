@@ -51,7 +51,7 @@ ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
   \code{\link[scatterplot3d]{scatterplot3d}}). Function will display
   only one selected set of \code{\link[vegan]{scores}}, typically
   either \code{"sites"} or \code{"species"}. Examples show how to use
-  the inivisble return object to add another set of points to the 2D
+  the invisible return object to add another set of points to the 2D
   projection.
 
   In constrained ordination (\code{\link[vegan]{cca}},

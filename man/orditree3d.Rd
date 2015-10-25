@@ -25,7 +25,9 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
     object or any other structure defining a 2D plane.}
 
   \item{cluster}{Result of hierarchic cluster analysis, such as
-    \code{\link{hclust}} or \code{\link[cluster]{agnes}}.}
+    \code{\link{hclust}} or \code{\link[cluster]{agnes}} or any other
+    clutering that can be coerced to a compliant format by
+    \code{\link{as.hclust}}.}
 
   \item{prune}{Number of upper levels hierarchies removed from the
     tree. If \code{prune} > 0, tree will be cut into \code{prune + 1}
@@ -52,9 +54,14 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 }
 
 \details{
-  \code{orditree3d} uses \pkg{scatterplot3d} package to draw a
-  static 3D plot of the dendrogram over the ordination, and
+
+  \code{orditree3d} uses \pkg{scatterplot3d} package to draw a static
+  3D plot of the dendrogram over the ordination, and
   \code{ordirgltree} uses \pkg{rgl} to make a dynamic, spinnable plot.
+  The functions were developed to plot a cluster dendrogram over a 2D
+  ordination plane, but any other plane can be used, for instance, a
+  map.
+
 }
 
 \value{

@@ -2,7 +2,7 @@
 \alias{rgl.renyiaccum}
 
 \title{
-  Display dynamic perspective plot of Renyi diversity accumulation
+  Dynamic Perspective Plot of Renyi Diversity Accumulation
 }
 \description{
   Function \code{rgl.renyiaccum} displays a dynamic 3D plot of the result
