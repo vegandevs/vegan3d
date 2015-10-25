@@ -15,6 +15,8 @@ ordination methods or any other ordination method that \pkg{vegan}
 are based on the \pkg{rgl} package and static plots are drawn with the
 \pkg{scatterplot3d} package.
 
+\packageIndices{vegan3d}
+
 }
 
 \section{Drawing with rgl Functions}{
