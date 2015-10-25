@@ -67,9 +67,10 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 \value{
   Function \code{orditree3d} returns invisibly a
   \code{\link[scatterplot3d]{scatterplot3d}} result object amended
-  with items \code{leaves} and \code{nodes} that give the projected
-  coordinates of ordination scores and internal nodes. Function
-  \code{ordirgltree} returns nothing.
+  with items \code{points} and \code{internal} that give the projected
+  coordinates of ordination scores and internal nodes, and
+  \code{col.points} and \code{col.internal} that give their
+  colours. Function \code{ordirgltree} returns nothing.
 }
 
 \author{

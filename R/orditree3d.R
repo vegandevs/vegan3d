@@ -49,8 +49,11 @@
                           node$x[merge[i,j]], node$y[merge[i,j]],
                           col = lcol[merge[i,j]], ...)
 
-    pl$nodes <- node
-    pl$leaves <- leaf
+    pl$internal <- do.call(cbind, node)
+    pl$points <- do.call(cbind, leaf)
+    pl$col.internal <- as.matrix(lcol)
+    pl$col.points <- as.matrix(col)
+    class(pl) <- c("orditree3d", "ordiplot3d")
     invisible(pl)
 }
 
