@@ -9,15 +9,16 @@
 \alias{orglcluster}
 
 \title{Three-Dimensional Dynamic Ordination Graphics }
+
 \description{
-  Function \code{ordirgl} displays three-dimensional dynamic ordination 
-  graphs which can be rotated and zoomed into using \code{\link[rgl]{rgl}}
-  package. This function works with all ordination
-  results from \code{vegan} and all ordination results known by the
-  \code{\link{scores}} function. The \code{orglXXXX} functions add
-  elements to the \code{ordirgl} graph similarly as \code{ordiXXXX}
-  function in \pkg{vegan}.
+  Function \code{ordirgl} displays three-dimensional dynamic
+  ordination graphs which can be rotated and zoomed. This function
+  works with all ordination results from \code{vegan} and all
+  ordination results known by the \code{\link{scores}} function. The
+  \code{org}-prefixed functions add elements to the \code{ordirgl}
+  graph similarly as \code{ordi}-prefixed functions in \pkg{vegan}.
 }
+
 \usage{
 ordirgl(object, display = "sites", choices = 1:3, type = "p", col = "black",
     ax.col = "red", arr.col = "yellow", radius, text, envfit, ...)
@@ -77,63 +78,68 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
 }
 \details{
 
-  Function \code{ordirgl} plots dynamic graphics using OpenGL with
-  \code{\link[rgl]{rgl}}.  Function uses most default settings of
-  underlying graphical functions, and you must consult their help
-  pages for configuration. Texts are plotted with
-  \code{\link[rgl]{rgl.texts}} and points with
-  \code{\link[rgl]{rgl.spheres}} which both have their own
-  configuration switches and also can be modified with
-  \code{\link[rgl]{rgl.material}}.  The point size is directly
-  defined by \code{radius} argument in \code{\link[rgl]{rgl.spheres}}
-  in the units of ordination scores, but \code{ordirgl} determines a
-  default size which can be further modiefied by \code{cex}.
+  Function \code{ordirgl} plots dynamic graphics using OpenGL with the
+  \code{\link[rgl]{rgl}} package. It clears the graphics device and
+  starts a new plot. The function was designed for ordination methods
+  in the \pkg{vegan} package, but it can handle any method known to
+  \pkg{vegan} \code{\link[vegan]{scores}} function, or to any three
+  column matrix. The \code{orgl}-prefixed functions can add items to
+  the opened \pkg{rgl} graphics device.
 
-  Functions will display only one selected set of
-  \code{\link[vegan]{scores}}, typically either \code{"sites"} or
-  \code{"species"}, but for instance \code{\link[vegan]{cca}} also has
-  \code{"lc"} scores. In constrained ordination
-  (\code{\link[vegan]{cca}}, \code{\link[vegan]{rda}},
-  \code{\link[vegan]{capscale}}), biplot arrows and centroids are
-  always displayed similarly as in two-dimensional plotting function
-  \code{\link[vegan]{plot.cca}}.  Alternatively, it is possible to
-  display fitted environmental vectors or class centroids from
-  \code{\link[vegan]{envfit}} in both graphs.  These are displayed
-  similarly as the results of constrained ordination, and they can be
-  shown only for non-constrained ordination. The user must remember to
-  specify at least three axes in \code{\link[vegan]{envfit}} if the
-  results are used with these functions.
+  Function \code{ordirgl} uses most default settings of underlying
+  graphical functions in \code{rgl}. It plots only one set of points,
+  but functions \code{orglpoints} and \code{orgltext} can add new
+  items to an existing plot. The points are plotted using
+  \code{\link[rgl]{rgl.spheres}} and the text using
+  \code{\link[rgl]{rgl.texts}} which both have their own configuration
+  switches and their general look and feel can be modified with
+  \code{\link[rgl]{rgl.material}}. The point size is directly defined
+  by \code{radius} argument in the units of ordination scores in
+  \code{\link[rgl]{rgl.spheres}}, but \code{ordirgl} uses a default
+  size of 1\% of the length of the longest axis, and this can be
+  further modified by the \code{cex} multiplier.
 
-  Function \code{ordigl} makes a dynamic three-dimensional graph that
-  can be rotated with mouse, and zoomed into with mouse buttons or
-  wheel or touchpad gestures. Function \code{ordirgl} uses default
-  settings, and you should consult \pkg{rgl} documentation for
-  configuration, in particular see \code{\link[rgl]{rgl.material}}.
-  Function \code{ordirgl} always cleans its graphic window before
-  drawing.
+  In constrained ordination (\code{\link[vegan]{cca}},
+  \code{\link[vegan]{rda}}, \code{\link[vegan]{capscale}}), biplot
+  arrows and centroids are always displayed similarly as in
+  two-dimensional plotting function \code{\link[vegan]{plot.cca}}.
+  Alternatively, it is possible to display fitted environmental
+  vectors or class centroids from \code{\link[vegan]{envfit}} in both
+  graphs.  These are displayed similarly as the results of constrained
+  ordination, and they can be shown only for non-constrained
+  ordination. The user must remember to specify at least three axes in
+  \code{\link[vegan]{envfit}} if the results are used with these
+  functions.
 
-  Function \code{orglpoints} adds points and \code{orgltext} adds text
-  to existing \code{ordirgl} windows.  In addition, function
-  \code{orglsegments} combines points within \code{"groups"} with line
-  segments similarly as \code{\link[vegan]{ordisegments}}. Function
-  \code{orglspider} works similarly as
+  Function \code{orglsegments} is similar to \pkg{vegan}
+  \code{\link[vegan]{ordisegments}} and connects points by line
+  segments. This can be useful for regular transects. The colour of
+  segments can be a vector which corresponds to the \code{groups} and
+  will be recycled.
+
+  Function \code{orglspider} is similar as \pkg{vegan}
   \code{\link[vegan]{ordispider}}: it connects points to their
   weighted centroid within \code{"groups"}, and in constrained
   ordination it can connect \code{"wa"} or weighted averages scores to
   corresponding \code{"lc"} or linear combination scores if
-  \code{"groups"} is missing.  Function \code{orglellipse} works
-  similarly as \code{\link[vegan]{ordiellipse}} and will draw ellipses
-  of confidence regions for \code{"groups"}. Function
-  \code{orglspantree} adds a minimum spanning tree from
-  \code{\link[vegan]{spantree}}. This a 3D equivalent of
+  \code{"groups"} is missing.  Function \code{orglellipse} is similar
+  as \pkg{vegan} \code{\link[vegan]{ordiellipse}} and draws ellipsoids
+  of standard deviance, standard error or confidence regions for
+  \code{groups}. At least four points are needed to define an
+  ellipsoid in 3D, and even these will fail if all points are strictly
+  on 2D. The \code{col} argument for both of these functions can be a
+  vector corresponding to the \code{groups}.
+
+  Function \code{orglspantree} adds a minimum spanning tree from
+  \pkg{vegan} \code{\link[vegan]{spantree}}. This a 3D equivalent of
   \code{\link[vegan]{lines.spantree}}.  Function \code{orglcluster}
   adds a hierarchic cluster tree from \code{\link{hclust}} or related
   functions. This is a 3D equivalent of
-  \code{\link[vegan]{ordicluster}}.
-
-  Basic \code{rgl} functions \code{\link[rgl]{rgl.points}},
-  \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.lines}},
-  \code{\link[rgl]{bbox3d}} and many others can be used.
+  \code{\link[vegan]{ordicluster}}. The \code{col} argument for both
+  of these functions can be a vector corresponding to the connected
+  points. In \code{orglspantree} the line colour is a mixture of
+  colours of joined points, and in \code{orglcluster} it is a mixture
+  of all points in the joined cluster.
 
 }
  
@@ -147,19 +153,20 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
 
 \section{Warning}{
   Function \code{ordirgl} uses OpenGL package \code{\link[rgl]{rgl}}
-  which may not be functional in all platforms, and can crash R in
-  some: use \code{\link{save.image}} before trying \code{ordirgl}. It
-  seems that \code{\link[rgl]{rgl.texts}} does not always position the
-  text like supposed, and it may be safe to verify text location with
-  corresponding points.
+  which may not be functional in all platforms.
 }
 
 \seealso{
-  \code{\link[rgl]{rgl}}, \code{\link[rgl]{rgl.points}},
+
+  \code{\link[rgl]{rgl}}, \code{\link[rgl]{rgl.spheres}},
   \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.viewpoint}},
   \code{\link[vegan]{envfit}}. These are 3D dynamic variants of
   \pkg{vegan} functions \code{\link[vegan]{ordiplot}},
-  \code{\link[vegan]{ordispider}} and \code{\link[vegan]{ordiellipse}}.
+  \code{\link[vegan]{ordisegments}}, \code{\link[vegan]{ordispider}}
+  and \code{\link[vegan]{ordiellipse}},
+  \code{\link[vegan]{ordicluster}} and
+  \code{\link[vegan]{lines.spantree}}.
+
 }
 
 \examples{
