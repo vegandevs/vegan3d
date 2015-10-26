@@ -49,8 +49,11 @@
                           node$x[merge[i,j]], node$y[merge[i,j]],
                           col = lcol[merge[i,j]], ...)
 
-    pl$nodes <- node
-    pl$leaves <- leaf
+    pl$internal <- do.call(cbind, node)
+    pl$points <- do.call(cbind, leaf)
+    pl$col.internal <- as.matrix(lcol)
+    pl$col.points <- as.matrix(col)
+    class(pl) <- c("orditree3d", "ordiplot3d")
     invisible(pl)
 }
 
@@ -99,8 +102,10 @@
                           c(y[i], y[merge[i,j]]),
                           c(z[i], z[merge[i,j]]),
                           col = lcol[merge[i,j]], ...)
-    ## add a short nipple so that you see the root
-    n <- nrow(merge)
-    rgl.lines(c(x[n],x[n]), c(y[n],y[n]), c(z[n],1.05*z[n]),
-              col = lcol[n], ...)
+    ## add a short nipple so that you see the root (if you draw the root)
+    if (prune <= 0) {
+        n <- nrow(merge)
+        rgl.lines(c(x[n],x[n]), c(y[n],y[n]), c(z[n],1.05*z[n]),
+                  col = lcol[n], ...)
+    }
 }

@@ -45,7 +45,7 @@
     nodecol <- rgb(nodecol)
     ## go through merge matrix
     merge <- cluster$merge
-    for(i in seq_len(nrow(merge)) - prune) {
+    for(i in seq_len(nrow(merge) - prune)) {
         if(merge[i,1] < 0)
             one <- x[-merge[i,1],]
         else
