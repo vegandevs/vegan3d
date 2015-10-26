@@ -7,7 +7,9 @@
         lc <- scores(object, display = "lc", choices = choices, ...)
         wa <- scores(object, display = "wa", choices = choices, ...)
         for (i in 1:nrow(lc)) rgl.lines(c(lc[i, 1], wa[i, 1]), 
-                                        c(lc[i, 2], wa[i, 2]), c(lc[i, 3], wa[i, 3]), ...)
+                                        c(lc[i, 2], wa[i, 2]),
+                                        c(lc[i, 3], wa[i, 3]),
+                                        color = col, ...)
     }
     else {
         pts <- scores(object, display = display, choices = choices,  ...)
