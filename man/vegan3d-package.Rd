@@ -61,7 +61,7 @@ objects. You must consult the
 configuring your plots.
 
 Please note that \pkg{scatterplot3d} does not allow setting exact
-aspect ratio of the vertical axes. The \pkg{vegan3d} package tries to
+aspect ratio of the vertical axis. The \pkg{vegan3d} package tries to
 circumvent the problem, but you must check the results carefully for
 an acceptable aspect ratio. This could be easily changed in
 \code{\link[scatterplot3d]{scatterplot3d}}, but the package author has

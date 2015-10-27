@@ -70,7 +70,10 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   with items \code{points} and \code{internal} that give the projected
   coordinates of ordination scores and internal nodes, and
   \code{col.points} and \code{col.internal} that give their
-  colours. Function \code{ordirgltree} returns nothing.
+  colours. All matrix-like objects can be accessed with
+  \code{scores}.
+
+  Function \code{ordirgltree} returns nothing.
 }
 
 \author{
