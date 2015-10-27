@@ -6,8 +6,12 @@
     if (inherits(object, "cca") && missing(groups)) {
         lc <- scores(object, display = "lc", choices = choices, ...)
         wa <- scores(object, display = "wa", choices = choices, ...)
+        if (length(lc) == 0 || length(wa) == 0)
+            stop("needs constrained ordination with WA and LC scores when 'groups' is missing")
         for (i in 1:nrow(lc)) rgl.lines(c(lc[i, 1], wa[i, 1]), 
-                                        c(lc[i, 2], wa[i, 2]), c(lc[i, 3], wa[i, 3]), ...)
+                                        c(lc[i, 2], wa[i, 2]),
+                                        c(lc[i, 3], wa[i, 3]),
+                                        color = col, ...)
     }
     else {
         pts <- scores(object, display = display, choices = choices,  ...)

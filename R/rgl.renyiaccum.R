@@ -1,6 +1,8 @@
 `rgl.renyiaccum` <-
     function(x, rgl.height = 0.2,  ...)
 {
+    if (!inherits(x, "renyiaccum"))
+        stop("'x' must be a 'renyiaccum' result object")
     y <- x[,,1] * rgl.height
     rgl.min = 0
     rgl.max = max(y)

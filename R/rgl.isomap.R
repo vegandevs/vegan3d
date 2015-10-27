@@ -1,6 +1,8 @@
 `rgl.isomap` <-
     function(x, web = "white", ...)
 {
+    if (!inherits(x, "isomap"))
+        stop("'x' must be an 'isomap' result object")
     ordirgl(x, ...)
     z <- scores(x, ...)
     net <- x$net
