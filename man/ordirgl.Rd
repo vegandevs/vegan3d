@@ -15,7 +15,7 @@
   ordination graphs which can be rotated and zoomed. This function
   works with all ordination results from \code{vegan} and all
   ordination results known by the \code{\link{scores}} function. The
-  \code{org}-prefixed functions add elements to the \code{ordirgl}
+  \code{orgl}-prefixed functions add elements to the \code{ordirgl}
   graph similarly as \code{ordi}-prefixed functions in \pkg{vegan}.
 }
 
@@ -63,9 +63,12 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
     standard deviations of their averages (\code{"se"}) are used.}
   \item{conf}{Confidence limit for ellipses, e.g., 0.95. If not given,
     sd or se ellipses are drawn.}
-  \item{col}{Colour of items, can be a vector corresponding to
-    \code{groups}.}
-  \item{alpha}{Transparency of colour between 0.0 (fully transparent)
+  \item{col}{Colour of items. This can be a vector and factors are
+    interpreted as their internal numerical values. If the function
+    has a \code{groups} argument, vector \code{col} is used for each
+    of these, and for other functions it is matched to points in
+    \code{ordirgl} (see Details below).}
+\item{alpha}{Transparency of colour between 0.0 (fully transparent)
     and 1.0 (non-transparent).}
   \item{spantree}{A minimum spanning tree object from \pkg{vegan}
     \code{\link[vegan]{spantree}}.}
@@ -139,7 +142,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   of these functions can be a vector corresponding to the connected
   points. In \code{orglspantree} the line colour is a mixture of
   colours of joined points, and in \code{orglcluster} it is a mixture
-  of all points in the joined cluster.
+  of all points in the cluster.
 
 }
  
