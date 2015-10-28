@@ -1,7 +1,7 @@
 Package: vegan3d
 Title: Static and Dynamic 3D Plots for the 'vegan' Package
-Version: 0.99-0
-Date: 2015-10-21
+Version: 1.0-0
+Date: 2015-10-29
 Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
 	     email="jari.oksanen@oulu.fi"),
              person("Roeland", "Kindt", role="aut"),
@@ -13,4 +13,4 @@ Description: Static and dynamic 3D plots to be used with ordination
     results and in diversity analysis, especially with the vegan package.
 License: GPL-2
 BugReports: https://github.com/vegandevs/vegan3d/issues
-URL: https://github.com/vegandevs/vegan3d
+URL: https://cran.r-project.org/, https://github.com/vegandevs/vegan3d
