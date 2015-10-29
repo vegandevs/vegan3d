@@ -33,9 +33,6 @@ Special plotting functions based on **lattice** and **tcltk** packages
 are still in **vegan**. **ggplot2**-based functions are in
 [**ggvegan**](https://github.com/gavinsimpson/ggvegan) package.
 
-The **rgl** functions are based on the release 0.65-0. They work with
-more modern **rgl** but do not use its full capabilities.
-
 #### Released version
 [![CRAN version](http://www.r-pkg.org/badges/version/vegan3d)](http://cran.rstudio.com/web/packages/vegan3d/index.html) [![](http://cranlogs.r-pkg.org/badges/grand-total/vegan3d)](http://cran.rstudio.com/web/packages/vegan3d/index.html)
 
