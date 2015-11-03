@@ -1,3 +1,15 @@
+Version 1.0-1
+
+### Bug Fixes
+
+* `orglcluster` did not obey `display` argument but always returned
+  `"sites"`.
+
+### New Features
+
+* `ordirgl` allows suppressing display of environmental variables in
+  constrained ordination with `envfit = NA`.
+
 Version 1.0-0
 =============
 
