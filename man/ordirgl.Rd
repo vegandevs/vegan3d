@@ -50,7 +50,8 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \item{radius}{Size of points in the units of ordination scores.}
   \item{text}{Text to override the default with \code{type = "t"}.}
   \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
-    displayed in the graph.}
+    displayed in the graph. Use \code{envfit = NA} to suppress display
+    of environmental variables in constrained ordination.}
   \item{adj}{Text justification passed to \code{\link[rgl]{rgl.texts}}.}
   \item{groups}{Factor giving the groups for which the graphical item is
     drawn.}

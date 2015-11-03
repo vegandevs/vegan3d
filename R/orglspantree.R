@@ -32,7 +32,7 @@
 {
     if (!inherits(cluster, "hclust"))
         cluster <- as.hclust(cluster)
-    x <- scores(object, display = "sites", choices = choices, ...)
+    x <- scores(object, display = display, choices = choices, ...)
     ## recycle colours if needed
     if (is.factor(col))
         col <- as.numeric(col)
