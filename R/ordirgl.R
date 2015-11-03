@@ -46,8 +46,8 @@
         (is.list(object) && !is.null(object$CCA) && object$CCA$rank > 0)) {
         if (!missing(envfit)) 
             object <- envfit
-        if (is.na(envfit))
-            return()
+        if (!missing(envfit) && is.na(envfit))
+            return(invisible())
         bp <- scores(object, dis = "bp", choices = choices)
         cn <- scores(object, dis = "cn", choices = choices)
         if (!is.null(cn) && !any(is.na(cn))) {
