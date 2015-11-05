@@ -3,7 +3,7 @@ Version 1.0-1
 
 ### Bug Fixes
 
-* `orglcluster` did not obey `display` argument but always returned
+* `orglcluster` did not obey `display` argument but always showed
   `"sites"`.
 
 ### New Features
@@ -18,6 +18,10 @@ Version 1.0-0
 
 * Package was updated to the current **rgl** (version 0.95) giving a
   facelift to the plots.
+
+### Bug Fixes
+
+ * `orglspider` was not exported.
 
 ### New Functions
 
