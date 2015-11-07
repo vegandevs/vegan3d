@@ -23,7 +23,7 @@
         if (missing(radius))
             radius <- max(apply(x, 2, function(z) diff(range(z))))/100
         ## users may expect cex to work (I would)
-        cex <- match.call(expand.dots = FALSE)$...$cex
+        cex <- eval(match.call(expand.dots = FALSE)$...$cex)
         if (!is.null(cex))
             radius <- cex * radius
         rgl.spheres(x, radius = radius, col = col,  ...)
