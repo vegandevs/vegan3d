@@ -3,6 +3,8 @@ Version 1.0-1
 
 ### Bug Fixes
 
+* `ordirgl` failed when `cex` was a variable instead of a number.
+
 * `orglcluster` did not obey `display` argument but always showed
   `"sites"`.
 
