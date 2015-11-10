@@ -55,9 +55,9 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 
 \details{
 
-  \code{orditree3d} uses \pkg{scatterplot3d} package to draw a static
+  \code{orditree3d} uses \CRANpkg{scatterplot3d} package to draw a static
   3D plot of the dendrogram over the ordination, and
-  \code{ordirgltree} uses \pkg{rgl} to make a dynamic, spinnable plot.
+  \code{ordirgltree} uses \CRANpkg{rgl} to make a dynamic, spinnable plot.
   The functions were developed to plot a cluster dendrogram over a 2D
   ordination plane, but any other plane can be used, for instance, a
   map.
@@ -83,7 +83,7 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 \seealso{
 
   \code{\link{orglcluster}} and \code{\link[vegan]{ordicluster}} (in
-  \pkg{vegan}).
+  \CRANpkg{vegan}).
 
 }
 

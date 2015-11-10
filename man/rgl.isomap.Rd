@@ -43,7 +43,7 @@ rgl.isomap(x, web = "white", ...)
 }
 \note{
   This is a support function for \code{\link[vegan]{isomap}} ordination
-  in the \pkg{vegan} package. 
+  in the \CRANpkg{vegan} package. 
 }
 
 

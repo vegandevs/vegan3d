@@ -1,6 +1,11 @@
 Version 1.0-1
 =============
 
+### Installation
+
+* Documentation uses some macros that require **R** version 3.2.0 or
+  higher.
+
 ### Bug Fixes
 
 * `ordirgl` failed when `cex` was a variable instead of a number.

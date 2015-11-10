@@ -6,9 +6,9 @@
 }
 \description{
   Function \code{rgl.renyiaccum} displays a dynamic 3D plot of the result
-  of \code{\link[vegan]{renyiaccum}} function in the \pkg{vegan} 
+  of \code{\link[vegan]{renyiaccum}} function in the \CRANpkg{vegan} 
   package. Function \code{\link[vegan]{persp.renyiaccum}} (in 
-  \pkg{vegan}) produces similar static plots. 
+  \CRANpkg{vegan}) produces similar static plots. 
 }
 \usage{
 rgl.renyiaccum(x, rgl.height = 0.2, ...)
@@ -27,7 +27,7 @@ rgl.renyiaccum(x, rgl.height = 0.2, ...)
 }
 \details{
   This is a graphical support function to \code{\link[vegan]{renyiaccum}}
-  in \pkg{vegan}. Similar static plots can be produced by 
+  in \CRANpkg{vegan}. Similar static plots can be produced by 
   \code{\link[vegan]{persp.renyiaccum}}.
 }
 \value{

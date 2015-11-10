@@ -6,7 +6,7 @@
 \description{
   Function \code{ordiplot3d} displays three-dimensional ordination
   graphics using \code{\link[scatterplot3d]{scatterplot3d}}. Function 
-  works with all ordination results form \pkg{vegan} and all ordination 
+  works with all ordination results form \CRANpkg{vegan} and all ordination 
   results known by \code{\link[vegan]{scores}} function. 
 }
 \usage{
@@ -67,7 +67,7 @@ ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
   functions.
 
   The function has a \code{scores} method to extract the projected
-  coordinates from the invisible return object. Standard \pkg{vegan}
+  coordinates from the invisible return object. Standard \CRANpkg{vegan}
   functions can be used with the returned object.  You can use any
   function from the \code{\link[vegan]{ordihull}} and
   \code{\link[vegan]{ordiarrows}} families (see Examples).

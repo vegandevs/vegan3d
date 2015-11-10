@@ -16,7 +16,7 @@
   works with all ordination results from \code{vegan} and all
   ordination results known by the \code{\link{scores}} function. The
   \code{orgl}-prefixed functions add elements to the \code{ordirgl}
-  graph similarly as \code{ordi}-prefixed functions in \pkg{vegan}.
+  graph similarly as \code{ordi}-prefixed functions in \CRANpkg{vegan}.
 }
 
 \usage{
@@ -71,7 +71,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
     \code{ordirgl} (see Details below).}
 \item{alpha}{Transparency of colour between 0.0 (fully transparent)
     and 1.0 (non-transparent).}
-  \item{spantree}{A minimum spanning tree object from \pkg{vegan}
+  \item{spantree}{A minimum spanning tree object from \CRANpkg{vegan}
     \code{\link[vegan]{spantree}}.}
   \item{cluster}{Result of hierarchic cluster analysis, such as
     \code{\link{hclust}} or \code{\link[cluster]{agnes}}.}
@@ -85,10 +85,10 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   Function \code{ordirgl} plots dynamic graphics using OpenGL with the
   \code{\link[rgl]{rgl}} package. It clears the graphics device and
   starts a new plot. The function was designed for ordination methods
-  in the \pkg{vegan} package, but it can handle any method known to
-  \pkg{vegan} \code{\link[vegan]{scores}} function, or to any three
+  in the \CRANpkg{vegan} package, but it can handle any method known to
+  \CRANpkg{vegan} \code{\link[vegan]{scores}} function, or to any three
   column matrix. The \code{orgl}-prefixed functions add items to the
-  opened \pkg{rgl} graphics device.
+  opened \CRANpkg{rgl} graphics device.
 
   Function \code{ordirgl} uses most default settings of underlying
   graphical functions in \code{rgl}. It plots only one set of points,
@@ -115,19 +115,19 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \code{\link[vegan]{envfit}} if the results are used with these
   functions.
 
-  Function \code{orglsegments} is similar to \pkg{vegan}
+  Function \code{orglsegments} is similar to \CRANpkg{vegan}
   \code{\link[vegan]{ordisegments}} and connects points by line
   segments. This can be useful for regular transects. The colour of
   segments can be a vector which corresponds to the \code{groups} and
   will be recycled.
 
-  Function \code{orglspider} is similar as \pkg{vegan}
+  Function \code{orglspider} is similar as \CRANpkg{vegan}
   \code{\link[vegan]{ordispider}}: it connects points to their
   weighted centroid within \code{"groups"}, and in constrained
   ordination it can connect \code{"wa"} or weighted averages scores to
   corresponding \code{"lc"} or linear combination scores if
   \code{"groups"} is missing.  Function \code{orglellipse} is similar
-  as \pkg{vegan} \code{\link[vegan]{ordiellipse}} and draws ellipsoids
+  as \CRANpkg{vegan} \code{\link[vegan]{ordiellipse}} and draws ellipsoids
   of standard deviance, standard error or confidence regions for
   \code{groups}. At least four points are needed to define an
   ellipsoid in 3D, and even these will fail if all points are strictly
@@ -135,7 +135,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   vector corresponding to the \code{groups}.
 
   Function \code{orglspantree} adds a minimum spanning tree from
-  \pkg{vegan} \code{\link[vegan]{spantree}}. This a 3D equivalent of
+  \CRANpkg{vegan} \code{\link[vegan]{spantree}}. This a 3D equivalent of
   \code{\link[vegan]{lines.spantree}}.  Function \code{orglcluster}
   adds a hierarchic cluster tree from \code{\link{hclust}} or related
   functions. This is a 3D equivalent of
@@ -165,7 +165,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \code{\link[rgl]{rgl}}, \code{\link[rgl]{rgl.spheres}},
   \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.viewpoint}},
   \code{\link[vegan]{envfit}}. These are 3D dynamic variants of
-  \pkg{vegan} functions \code{\link[vegan]{ordiplot}},
+  \CRANpkg{vegan} functions \code{\link[vegan]{ordiplot}},
   \code{\link[vegan]{ordisegments}}, \code{\link[vegan]{ordispider}}
   and \code{\link[vegan]{ordiellipse}},
   \code{\link[vegan]{ordicluster}} and
