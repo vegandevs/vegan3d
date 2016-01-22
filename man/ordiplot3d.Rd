@@ -123,13 +123,13 @@ ordiplot3d(ord)
 ### A boxed 'pin' version
 ordiplot3d(ord, type = "h")
 ### More user control
-pl <- ordiplot3d(ord, scaling = 3, angle=15, type="n")
+pl <- ordiplot3d(ord, scaling = "symmetric", angle=15, type="n")
 points(pl, "points", pch=16, col="red", cex = 0.7)
 ### identify(pl, "arrows", col="blue") would put labels in better positions
 text(pl, "arrows", col="blue", pos=3)
 text(pl, "centroids", col="blue", pos=1, cex = 1)
 ### Add species using xyz.convert function returned by ordiplot3d
-sp <- scores(ord, choices=1:3, display="species", scaling=3)
+sp <- scores(ord, choices=1:3, display="species", scaling="symmetric")
 text(pl$xyz.convert(sp), rownames(sp), cex=0.7, xpd=TRUE)
 ### Two ways of adding fitted variables to ordination plots
 ord <- cca(dune)
