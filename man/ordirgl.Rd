@@ -182,11 +182,11 @@ ordirgl(ord, size=4, col = "yellow")
 orgltext(ord, display = "species")
 ## show groups of Shrub abundance
 ## ordirgl: col by points
-with(mite.env, ordirgl(ord, col = as.numeric(Shrub), scaling = 1))
+with(mite.env, ordirgl(ord, col = as.numeric(Shrub), scaling = "sites"))
 ## orglspider & orglellipse: col by groups
-with(mite.env, orglspider(ord, Shrub, col = 1:3, scaling = 1))
+with(mite.env, orglspider(ord, Shrub, col = 1:3, scaling = "sites"))
 with(mite.env, orglellipse(ord, Shrub, col = 1:3, kind = "se", conf = 0.95,
-    scaling = 1))
+    scaling = "sites"))
 }
 }
 \keyword{ hplot }
