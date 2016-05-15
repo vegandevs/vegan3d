@@ -30,7 +30,8 @@ orglsegments(object, groups, order.by, display = "sites", choices = 1:3,
 orglspider(object, groups, display = "sites", w = weights(object, display),
     choices = 1:3, col = "black", ...)
 orglellipse(object, groups, display = "sites", w = weights(object, display),
-    kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3, col = "red", ...)
+    kind = c("sd", "se", "ehull"), conf, choices = 1:3, alpha = 0.3,
+    col = "red", ...)
 orglspantree(object, spantree, display = "sites", choices = 1:3,
     col = "black", ...)
 orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
@@ -60,8 +61,10 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
     used automatically for \code{\link{cca}}
     and \code{\link{decorana}} results, unless undone by the
     user. \code{w=NULL} sets equal weights to all points. }
-  \item{kind}{Whether standard deviations of points (\code{"sd"}) or
-    standard deviations of their averages (\code{"se"}) are used.}
+  \item{kind}{Draw ellipse for standard deviations of points
+    (\code{"sd"}) or standard deviations of their averages
+    (\code{"se"}) or an ellipsoid hull enclosing all points in the
+    group (\code{"ehull"}.}
   \item{conf}{Confidence limit for ellipses, e.g., 0.95. If not given,
     sd or se ellipses are drawn.}
   \item{col}{Colour of items. This can be a vector and factors are
