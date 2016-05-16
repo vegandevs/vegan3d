@@ -1,6 +1,6 @@
 `orglellipse` <-
     function(object, groups, display = "sites", w = weights(object, display),
-             kind = c("sd", "se"), conf, choices = 1:3, alpha = 0.3,
+             kind = c("sd", "se", "ehull"), conf, choices = 1:3, alpha = 0.3,
              col = "red", ...)
 {
     weights.default <- function(object, ...) NULL
@@ -14,8 +14,13 @@
     ## covariance and centres as lists
     Cov <- list()
     for (g in levels(groups))
-        Cov[[g]] <- cov.wt(x[groups == g,, drop = FALSE],
-                           wt = w[groups == g])
+        if (kind == "ehull") {
+            Cov[[g]] <- ellipsoidhull(x[groups == g,, drop = FALSE])
+            Cov[[g]]$n.obs <- sum(groups == g)
+        }
+        else
+            Cov[[g]] <- cov.wt(x[groups == g,, drop = FALSE],
+                               wt = w[groups == g])
     if (kind == "se")
         for(i in seq_len(length(Cov)))
             Cov[[i]]$cov <- Cov[[i]]$cov * sum(Cov[[i]]$wt^2)
@@ -32,7 +37,12 @@
         t <- sqrt(qchisq(conf, 3))
     ## graph
     for(i in seq_len(length(Cov)))
-        if (Cov[[i]]$n.obs > 3)
-            plot3d(ellipse3d(Cov[[i]]$cov, centre = Cov[[i]]$center, t = t),
-                   add = TRUE, alpha = alpha, col = col[i], ...)
+        if (Cov[[i]]$n.obs > 3) 
+            if (kind == "ehull")
+                plot3d(ellipse3d(Cov[[i]]$cov, centre = Cov[[i]]$loc,
+                                 t = sqrt(Cov[[i]]$d2)),
+                       add = TRUE, alpha = alpha, col = col[i], ...)
+            else
+                plot3d(ellipse3d(Cov[[i]]$cov, centre = Cov[[i]]$center, t = t),
+                       add = TRUE, alpha = alpha, col = col[i], ...)
 }

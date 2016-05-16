@@ -15,6 +15,11 @@ Version 1.0-1
 
 ### New Features
 
+* `orglellipse` gained a new option `kind = "ehull"` to draw ellipsoid
+  hulls or minimum volume ellipsoids that enclose all points of a
+  `group`. The option is based on `ellipsoidhull()` function
+  (**cluster** package).
+
 * `ordirgl` allows suppressing display of environmental variables in
   constrained ordination with `envfit = NA`.
 

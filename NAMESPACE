@@ -4,6 +4,8 @@ importFrom(vegan, scores, ordiArrowMul)
 import(rgl)
 ## scatterplot3d only has one function
 import(scatterplot3d)
+## ellipsoid hulls
+importFrom(cluster, ellipsoidhull)
 ## explicit imports for base R functions
 importFrom(grDevices, rainbow, col2rgb, rgb)
 importFrom(graphics, arrows, points, segments, text)
