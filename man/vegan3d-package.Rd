@@ -60,15 +60,6 @@ objects. You must consult the
 \code{\link[scatterplot3d]{scatterplot3d}} documentation for
 configuring your plots.
 
-Please note that \CRANpkg{scatterplot3d} does not allow setting exact
-aspect ratio of the vertical axis. The \pkg{vegan3d} package tries to
-circumvent the problem, but you must check the results carefully for
-an acceptable aspect ratio. This could be easily changed in
-\code{\link[scatterplot3d]{scatterplot3d}}, but the package author has
-not responded when we have sent patches. A patched version of
-\CRANpkg{scatterplot3d} is available in
-\url{https://github.com/jarioksa/scatterplot3d/}.
-
 Function \code{\link{ordiplot3d}} is similar to \code{\link{ordirgl}}
 or \code{\link[vegan]{ordiplot}} and draws a static 3D plot in the
 standard graphical device. It returns invisibly a plotting object
