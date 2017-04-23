@@ -1,10 +1,9 @@
 Version 1.1-0
 =============
 
-* `ordiplot3d` can now set the exact aspect ratio. Earlier we had a
-  kluge that gave approximately the correct ratio. The package now
-  depends on **scatterplot3d** version 0.3-40 which allows setting the
-  aspect ratio.
+* `ordiplot3d` can now set the exact aspect ratio in ordination
+  plots. Earlier we had a kluge that gave approximately correct
+  ratio. The package now depends on **scatterplot3d** version 0.3-40.
 
 Version 1.0-1
 =============
