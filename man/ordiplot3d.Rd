@@ -94,14 +94,6 @@ ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
 
 \section{Warning}{
 
-  Function \code{ordiplot3d} is based on
-  \code{\link[scatterplot3d]{scatterplot3d}} which does not allow
-  setting equal aspect ratio for axes.  The function tries to
-  circumvent this by setting equal plotting ranges for all axes so
-  that the plot should be a cube.  Depending on the dimensions of
-  plotting device, this may fail, and the user should verify that the
-  axes are approximately isometric.
-
   Please note that \code{\link[scatterplot3d]{scatterplot3d}} sets
   internally some graphical parameters (such as \code{mar} for margins)
   and does not honour default settings.  It is advisable to study

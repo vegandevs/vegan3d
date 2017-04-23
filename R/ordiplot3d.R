@@ -10,28 +10,22 @@
     if (is.factor(col))
         col = as.numeric(col)
     col <- rep(col, length = nrow(x))
-    ### scatterplot3d does not allow setting equal aspect ratio. We
-    ### try to compensate this by setting equal limits for all axes
-    ### and hoping the graph is more or less square so that the lines
-    ### come correctly out.
-    rnge <- apply(x, 2, range)
-    scl <- c(-0.5, 0.5) * max(apply(rnge, 2, diff))
+    ## need scatterplot3d (>= 0.3-39) to set aspect ration; earlier we
+    ## had a kluge here
     pl <- vegan:::ordiArgAbsorber(x[, 1], x[, 2], x[, 3],
                           color = col,
                           xlab = xlab, ylab = ylab, zlab = zlab,
-                          xlim = mean(rnge[,1]) + scl,
-                          ylim = mean(rnge[,2]) + scl,
-                          zlim = mean(rnge[,3]) + scl,
+                          asp = 1,
                           FUN = "scatterplot3d", ...)
-    pl$points3d(range(x[, 1]), c(0, 0), c(0, 0), type = "l", 
+    pl$points3d(range(x[, 1]), c(0, 0), c(0, 0), type = "l",
                 col = ax.col)
-    pl$points3d(c(0, 0), range(x[, 2]), c(0, 0), type = "l", 
+    pl$points3d(c(0, 0), range(x[, 2]), c(0, 0), type = "l",
                 col = ax.col)
-    pl$points3d(c(0, 0), c(0, 0), range(x[, 3]), type = "l", 
+    pl$points3d(c(0, 0), c(0, 0), range(x[, 3]), type = "l",
                 col = ax.col)
     if (!missing(envfit) ||
         (!is.null(object$CCA) && object$CCA$rank > 0)) {
-        if (!missing(envfit)) 
+        if (!missing(envfit))
             object <- envfit
         bp <- scores(object, dis = "bp", choices = choices, ...)
         cn <- scores(object, dis = "cn", choices = choices, ...)
@@ -45,7 +39,7 @@
             mul <- ordiArrowMul(cbind(tmp$x, tmp$y), fill=1)
             bp.xyz <- pl$xyz.convert(bp * mul)
             orig <- pl$xyz.convert(0, 0, 0)
-            arrows(orig$x, orig$y, bp.xyz$x, bp.xyz$y, length = arr.len, 
+            arrows(orig$x, orig$y, bp.xyz$x, bp.xyz$y, length = arr.len,
                    col = arr.col)
         }
     }
