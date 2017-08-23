@@ -1,3 +1,9 @@
+Version 1.1-1
+=============
+
+* `rgl.isomap` could fail mysteriously with some extra arguments
+  (_e.g._ with `type = "p"`).
+
 Version 1.1-0
 =============
 
