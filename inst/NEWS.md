@@ -1,6 +1,9 @@
 Version 1.1-1
 =============
 
+* `ordiplot3d` failed if input was a scores matrix instead of being a
+  list-style object.
+
 * `rgl.isomap` could fail mysteriously with some extra arguments
   (_e.g._ with `type = "p"`).
 
