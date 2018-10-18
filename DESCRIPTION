@@ -3,7 +3,7 @@ Title: Static and Dynamic 3D Plots for the 'vegan' Package
 Version: 1.1-1
 Date: 2017-11-29
 Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
-	     email="jari.oksanen@oulu.fi"),
+	     email="jhoksane@gmail.com"),
              person("Roeland", "Kindt", role="aut"),
              person(given=c("Gavin", "L."), family="Simpson", role="aut",
              email="ucfagls@gmail.com"))
