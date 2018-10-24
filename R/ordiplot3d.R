@@ -3,6 +3,9 @@
               ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
               xlab, ylab, zlab, ...)
 {
+    ordiArgAbsorber <- function(..., shrink, origin, scaling, triangular,
+                              display, choices, const, truemean, FUN)
+        { match.fun(FUN)(...) }
     x <- scores(object, display = display, choices = choices, ...)
     if (missing(xlab)) xlab <- colnames(x)[1]
     if (missing(ylab)) ylab <- colnames(x)[2]
@@ -12,7 +15,7 @@
     col <- rep(col, length = nrow(x))
     ## need scatterplot3d (>= 0.3-39) to set aspect ration; earlier we
     ## had a kluge here
-    pl <- vegan:::ordiArgAbsorber(x[, 1], x[, 2], x[, 3],
+    pl <- ordiArgAbsorber(x[, 1], x[, 2], x[, 3],
                           color = col,
                           xlab = xlab, ylab = ylab, zlab = zlab,
                           asp = 1,
