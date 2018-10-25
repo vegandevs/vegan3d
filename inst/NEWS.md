@@ -1,8 +1,8 @@
 Version 1.1-2
 =============
 
-* This is a maintenance release to accomodate for more stringent tests
-  in CRAN. There should be no user-visible changes.
+* This is a maintenance release to accommodate more stringent tests in
+  CRAN. There should be no user-visible changes.
 
 Version 1.1-1
 =============
