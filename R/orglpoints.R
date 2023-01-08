@@ -14,7 +14,7 @@
     if (is.factor(col))
         col <- as.numeric(col)
     col <- rep(col, length = nrow(x))
-    rgl.spheres(x, radius = radius, col = col, ...)
+    spheres3d(x, radius = radius, col = col, ...)
     invisible()
 }
 

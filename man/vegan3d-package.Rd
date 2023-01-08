@@ -27,7 +27,7 @@ ordination and clustering objects. The functions use \CRANpkg{rgl} setting
 and conventions and do not change the user settings. For general
 configuration of the plots, users should check \pkg{\link{rgl}}
 documentation. For instance, general look and feel of drawn items can
-be configured with \code{\link[rgl]{rgl.material}}.
+be configured with \code{\link[rgl]{material3d}}.
 
 The \CRANpkg{rgl} package may not be available in all platforms, and
 therefore the package is not automatically attached. If you want to

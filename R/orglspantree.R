@@ -20,7 +20,7 @@
         one <- x[i+1,]
         two <- x[k[i],]
         lcol <- rgb(t(col[, i+1] + col[,k[i]])/2)
-        rgl.lines(rbind(one, two), col = lcol, ...)
+        segments3d(rbind(one, two), col = lcol, ...)
     }
 }
 
@@ -54,6 +54,6 @@
             two <- x[-merge[i,2],]
         else
             two <- node[merge[i,2],]
-        rgl.lines(rbind(one, two), col = nodecol[i], ...)
+        segments3d(rbind(one, two), col = nodecol[i], ...)
     }
 }

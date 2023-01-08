@@ -10,6 +10,6 @@
     if (is.factor(col))
         col <- as.numeric(col)
     col <- rep(col, length = nrow(x))
-    rgl.texts(x[, 1], x[, 2], x[, 3], text, adj = adj,  col = col, ...)
+    text3d(x[, 1], x[, 2], x[, 3], text, adj = adj,  col = col, ...)
     invisible()
 }

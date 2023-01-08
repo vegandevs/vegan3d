@@ -8,7 +8,7 @@
         wa <- scores(object, display = "wa", choices = choices, ...)
         if (length(lc) == 0 || length(wa) == 0)
             stop("needs constrained ordination with WA and LC scores when 'groups' is missing")
-        for (i in 1:nrow(lc)) rgl.lines(c(lc[i, 1], wa[i, 1]), 
+        for (i in 1:nrow(lc)) segments3d(c(lc[i, 1], wa[i, 1]), 
                                         c(lc[i, 2], wa[i, 2]),
                                         c(lc[i, 3], wa[i, 3]),
                                         color = col, ...)
@@ -33,7 +33,7 @@
                 W <- w[gr]
                 ave <- apply(X, 2, weighted.mean, w = W)
                 for (i in 1:length(gr))
-                    rgl.lines(c(ave[1], X[i,1]), c(ave[2], X[i, 2]),
+                    segments3d(c(ave[1], X[i,1]), c(ave[2], X[i, 2]),
                               c(ave[3], X[i, 3]),  col = col[is], ...)
             }
         }
