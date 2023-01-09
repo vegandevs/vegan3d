@@ -8,7 +8,7 @@
     if (ncol(x) < 3) 
         stop("3D display needs three dimensions...")
     ## clear window and set isometric aspect ratio
-    rgl.clear()
+    clear3d()
     op <- aspect3d("iso")
     if (!all(op$scale == 1))
         warning("set isometric aspect ratio, previously was ",
@@ -26,21 +26,21 @@
         cex <- eval(match.call(expand.dots = FALSE)$...$cex)
         if (!is.null(cex))
             radius <- cex * radius
-        rgl.spheres(x, radius = radius, col = col,  ...)
+        spheres3d(x, radius = radius, col = col,  ...)
     }
     else if (type == "t") {
         if (missing(text)) 
             text <- rownames(x)
-        rgl.texts(x[, 1], x[, 2], x[, 3], text, adj = 0.5, col = col,  ...)
+        text3d(x[, 1], x[, 2], x[, 3], text, adj = 0.5, col = col,  ...)
     }
-    rgl.lines(range(x[, 1]), c(0, 0), c(0, 0), col = ax.col)
-    rgl.lines(c(0, 0), range(x[, 2]), c(0, 0), col = ax.col)
-    rgl.lines(c(0, 0), c(0, 0), range(x[, 3]), col = ax.col)
-    rgl.texts(1.1 * max(x[, 1]), 0, 0, colnames(x)[1], col = ax.col, 
+    segments3d(range(x[, 1]), c(0, 0), c(0, 0), col = ax.col)
+    segments3d(c(0, 0), range(x[, 2]), c(0, 0), col = ax.col)
+    segments3d(c(0, 0), c(0, 0), range(x[, 3]), col = ax.col)
+    text3d(1.1 * max(x[, 1]), 0, 0, colnames(x)[1], col = ax.col, 
               adj = 0.5)
-    rgl.texts(0, 1.1 * max(x[, 2]), 0, colnames(x)[2], col = ax.col, 
+    text3d(0, 1.1 * max(x[, 2]), 0, colnames(x)[2], col = ax.col, 
               adj = 0.5)
-    rgl.texts(0, 0, 1.1 * max(x[, 3]), colnames(x)[3], col = ax.col, 
+    text3d(0, 0, 1.1 * max(x[, 3]), colnames(x)[3], col = ax.col, 
               adj = 0.5)
     if (!missing(envfit) ||
         (is.list(object) && !is.null(object$CCA) && object$CCA$rank > 0)) {
@@ -52,9 +52,9 @@
         cn <- scores(object, dis = "cn", choices = choices)
         if (!is.null(cn) && !any(is.na(cn))) {
             bp <- bp[!(rownames(bp) %in% rownames(cn)), , drop = FALSE]
-            rgl.texts(cn[, 1], cn[, 2], cn[, 3], rownames(cn), 
+            text3d(cn[, 1], cn[, 2], cn[, 3], rownames(cn), 
                       col = arr.col, adj = 0.5)
-            rgl.points(cn[, 1], cn[, 2], cn[, 3], size = 5, col = arr.col)
+            points3d(cn[, 1], cn[, 2], cn[, 3], size = 5, col = arr.col)
         }
         if (!is.null(bp) && nrow(bp) > 0) {
             mul <- c(range(x[, 1]), range(x[, 2]), range(x[, 
@@ -64,9 +64,9 @@
             mul <- min(mul)
             bp <- bp * mul
             for (i in 1:nrow(bp)) {
-                rgl.lines(c(0, bp[i, 1]), c(0, bp[i, 2]), c(0, 
+                segments3d(c(0, bp[i, 1]), c(0, bp[i, 2]), c(0, 
                                                             bp[i, 3]), col = arr.col)
-                rgl.texts(1.1 * bp[i, 1], 1.1 * bp[i, 2], 1.1 * 
+                text3d(1.1 * bp[i, 1], 1.1 * bp[i, 2], 1.1 * 
                           bp[i, 3], rownames(bp)[i], col = arr.col,
                           adj = 0.5)
             }

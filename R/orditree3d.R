@@ -82,30 +82,30 @@
     b <- reorder(cluster, lcol[3,], agglo.FUN = "mean")$value
     lcol <- rgb(r, g, b)
     ## plot
-    rgl.clear()
+    clear3d()
     if (type == "p")
-        rgl.points(p, col = col, ...)
+        points3d(p, col = col, ...)
     else if (type == "t") {
         if (missing(text))
             text <- rownames(p)
-        rgl.texts(p, text = text, col = col, ...)
+        text3d(p, text = text, col = col, ...)
     }
     for (i in seq_len(nrow(merge) - prune))
         for(j in 1:2)
             if (merge[i,j] < 0)
-                rgl.lines(c(x[i], p[-merge[i,j],1]),
+                segments3d(c(x[i], p[-merge[i,j],1]),
                           c(y[i], p[-merge[i,j],2]),
                           c(z[i], 0),
                           col = col[-merge[i,j]], ...)
             else
-                rgl.lines(c(x[i], x[merge[i,j]]),
+                segments3d(c(x[i], x[merge[i,j]]),
                           c(y[i], y[merge[i,j]]),
                           c(z[i], z[merge[i,j]]),
                           col = lcol[merge[i,j]], ...)
     ## add a short nipple so that you see the root (if you draw the root)
     if (prune <= 0) {
         n <- nrow(merge)
-        rgl.lines(c(x[n],x[n]), c(y[n],y[n]), c(z[n],1.05*z[n]),
+        segments3d(c(x[n],x[n]), c(y[n],y[n]), c(z[n],1.05*z[n]),
                   col = lcol[n], ...)
     }
 }

@@ -15,7 +15,7 @@
         web <- col2rgb(web)/255
         for (i in 1:nrow(net)) {
             lcol <- rgb(t(rowMeans(web[, net[i,]])))
-            rgl.lines(z[net[i,],1], z[net[i,],2], z[net[i,],3], color=lcol)
+            segments3d(z[net[i,],1], z[net[i,],2], z[net[i,],3], color=lcol)
         }
     }
 }

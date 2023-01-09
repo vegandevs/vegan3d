@@ -21,7 +21,7 @@
         X <- pts[groups == is, , drop = FALSE]
         if (nrow(X) > 1) {
             for (i in 2:nrow(X)) {
-                rgl.lines(c(X[i-1,1],X[i,1]), c(X[i-1,2],X[i,2]), 
+                segments3d(c(X[i-1,1],X[i,1]), c(X[i-1,2],X[i,2]), 
                           c(X[i-1,3],X[i,3]), col = col[is], ...)
             }
         }

@@ -94,7 +94,7 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
   cl <- hclust(d, "aver")
   orditree3d(m, cl, pch=16, col=cutree(cl, 3))
   ## ordirgltree makes ordinary rgl graphics. It accepts
-  ## rgl.material() settings, and you can add elements to the
+  ## material3d() settings, and you can add elements to the
   ## open graph (for instance, bbox3d()).
   if (interactive() && require(rgl, quietly = TRUE)) {
   with(dune.env, ordirgltree(m, cl, col = as.numeric(Management), size = 6,

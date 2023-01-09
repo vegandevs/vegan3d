@@ -53,7 +53,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
     displayed in the graph. Use \code{envfit = NA} to suppress display
     of environmental variables in constrained ordination.}
-  \item{adj}{Text justification passed to \code{\link[rgl]{rgl.texts}}.}
+  \item{adj}{Text justification passed to \code{\link[rgl]{text3d}}.}
   \item{groups}{Factor giving the groups for which the graphical item is
     drawn.}
   \item{order.by}{Order points by this variable within \code{groups}.}
@@ -97,12 +97,12 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
   graphical functions in \code{rgl}. It plots only one set of points,
   but functions \code{orglpoints} and \code{orgltext} can add new
   items to an existing plot. The points are plotted using
-  \code{\link[rgl]{rgl.spheres}} and the text using
-  \code{\link[rgl]{rgl.texts}} which both have their own configuration
+  \code{\link[rgl]{spheres3d}} and the text using
+  \code{\link[rgl]{texts3d}} which both have their own configuration
   switches and their general look and feel can be modified with
-  \code{\link[rgl]{rgl.material}}. The point size is directly defined
+  \code{\link[rgl]{material3d}}. The point size is directly defined
   by \code{radius} argument in the units of ordination scores in
-  \code{\link[rgl]{rgl.spheres}}, but \code{ordirgl} uses a default
+  \code{\link[rgl]{spheres3d}}, but \code{ordirgl} uses a default
   size of 1\% of the length of the longest axis, and this can be
   further modified by the \code{cex} multiplier.
 
@@ -165,8 +165,8 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
 
 \seealso{
 
-  \code{\link[rgl]{rgl}}, \code{\link[rgl]{rgl.spheres}},
-  \code{\link[rgl]{rgl.texts}}, \code{\link[rgl]{rgl.viewpoint}},
+  \code{\link[rgl]{rgl}}, \code{\link[rgl]{spheres3d}},
+  \code{\link[rgl]{text3d}}, \code{\link[rgl]{rgl.viewpoint}},
   \code{\link[vegan]{envfit}}. These are 3D dynamic variants of
   \CRANpkg{vegan} functions \code{\link[vegan]{ordiplot}},
   \code{\link[vegan]{ordisegments}}, \code{\link[vegan]{ordispider}}
