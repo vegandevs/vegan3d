@@ -1,3 +1,10 @@
+Version 1.2-0
+=============
+
+* Adapted for deprecation of several functions in the **rgl**
+  package. You should upgrade **vegan3d** together with **rgl**. See
+  https://dmurdoch.github.io/rgl/articles/deprecation.html.
+
 Version 1.1-2
 =============
 
