@@ -88,7 +88,7 @@
     else if (type == "t") {
         if (missing(text))
             text <- rownames(p)
-        text3d(p, text = text, col = col, ...)
+        text3d(p, texts = text, col = col, ...)
     }
     for (i in seq_len(nrow(merge) - prune))
         for(j in 1:2)
