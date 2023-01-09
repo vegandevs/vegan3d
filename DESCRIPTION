@@ -6,7 +6,9 @@ Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
 	     email="jhoksane@gmail.com"),
              person("Roeland", "Kindt", role="aut"),
              person(given=c("Gavin", "L."), family="Simpson", role="aut",
-             email="ucfagls@gmail.com"))
+             email="ucfagls@gmail.com"),
+             person("Duncan", "Murdoch", role="ctb", 
+                    email="murdoch.duncan@gmail.com"))
 Depends: R (>= 3.2.0), vegan (>= 2.3-0)
 Imports: cluster, rgl, scatterplot3d (>= 0.3-40)
 Description: Static and dynamic 3D plots to be used with ordination
