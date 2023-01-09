@@ -6,11 +6,11 @@ and for static 3D plots based on **scatterplot3d** package.
 
 The package contains the following functions:
 
- * `ordirgl` with its support functions `orglpoints`, `orgltext`, `orglsegments`,
-   `orglellipse`, `orglspider`, `orglcluster` and `orglspantree`.  These
-   require **rgl** package and provide dynamic ordination graphics.
-   See a [simple example](http://cc.oulu.fi/~jarioksa/veganGL/). In general,
-   the `orglXXXX` functions are similar as 2D `ordiXXXX` functions in **vegan**. 
+ * `ordirgl` with its support functions `orglpoints`, `orgltext`,
+   `orglsegments`, `orglellipse`, `orglspider`, `orglcluster` and
+   `orglspantree`.  These require **rgl** package and provide dynamic
+   ordination graphics.  In general, the `orglXXXX` functions are
+   similar as 2D `ordiXXXX` functions in **vegan**.
 
  * **rgl** based support functions `rgl.isomap` to display `isomap`
      results, and `rgl.renyiaccum` to display `renyiaccum` results.
@@ -22,16 +22,12 @@ The package contains the following functions:
     dendrogram tree over a 2D plane. The first is a
     static function based on **scatterplot3d** and the latter a
     dynamic spinnable plot based on **rgl**. The method was initially
-    designed for showing dendrograms over ordination plane like 
-    e.g.,  [BCI plots over CA](http://cc.oulu.fi/~jarioksa/WebGL/BCIcca/),
-    but it can use other planes, like 
-    [the original sampling grid](http://cc.oulu.fi/~jarioksa/WebGL/BCIgrid/),
-    both coloured and labelled by the dominant tree species. Here also a
-    vegetation [clustering in the Palaearctic](http://cc.oulu.fi/~jarioksa/sibir).
+    designed for showing dendrograms over ordination plane.
 
 Special plotting functions based on **lattice** and **tcltk** packages
 are still in **vegan**. **ggplot2**-based functions are in
-[**ggvegan**](https://github.com/gavinsimpson/ggvegan) package.
+[**ggvegan**](https://github.com/gavinsimpson/ggvegan) and
+[**ggvegan2**](https://github.com/jarioksa/ggvegan2) packages.
 
 #### Released version
 [![CRAN version](http://www.r-pkg.org/badges/version/vegan3d)](http://cran.rstudio.com/web/packages/vegan3d/index.html) [![](http://cranlogs.r-pkg.org/badges/grand-total/vegan3d)](http://cran.rstudio.com/web/packages/vegan3d/index.html)
