@@ -26,9 +26,9 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 
 \arguments{ 
   \item{x}{An ordination result or any other object that
-    \code{\link{scores}} can handle, or for the \code{plot} function the
+    \code{scores} can handle, or for the \code{plot} function the
     object dumped from the interactive \code{orditkplot} session.}
-  \item{display}{Type of \code{\link{scores}} displayed. For ordination
+  \item{display}{Type of \code{scores} displayed. For ordination
     scores this typically is either \code{"species"} or \code{"sites"},
     and for \code{orditkplot} result it is either \code{"points"} or
     \code{"labels"}.}
@@ -49,7 +49,7 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
     \code{points} and \code{text} methods. See \code{\link{par}}.}
   \item{\dots}{Other arguments passed to the function. These can be
     graphical parameters (see \code{\link{par}}) used in the plot, or
-    extra arguments to \code{\link{scores}}. These arguments are
+    extra arguments to \code{scores}. These arguments are
     ignored in \code{plot}, but honoured in \code{text} and \code{points}. }  
 }
 
@@ -102,13 +102,14 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
   \code{orditkplot} canvas to have identical location of the labels.
 
   The function only displays one set of scores. However, you can use
-  \code{\link{ordipointlabel}} to produce a result object that has
-  different points and text types for several sets of scores and this
-  can be further edited with \code{orditkplot}. For a good starting
-  solution you need to scale the \code{\link{ordipointlabel}} result
-  so that the points span over the whole horizontal axis. The function
-  cannot show environmental variables or constraints, but it is
-  limited to unconstrained ordination.
+  \code{\link[vegan]{ordipointlabel}} (\CRANpkg{vegan}) to produce a
+  result object that has different points and text types for several
+  sets of scores and this can be further edited with
+  \code{orditkplot}. For a good starting solution you need to scale
+  the \code{\link[vegan]{ordipointlabel}} result so that the points
+  span over the whole horizontal axis. The function cannot show
+  environmental variables or constraints, but it is limited to
+  unconstrained ordination.
 
   The plot is a Tcl/Tk canvas, but the function tries to replicate
   standard graphical device of the platform, and it honours several
@@ -147,18 +148,15 @@ orditkplot(x, display = "species", choices = 1:2, width, xlim, ylim,
 
 }
 
-\seealso{ Function \code{\link{ordipointlabel}} is an automatic
+\seealso{ Function \code{\link[vegan]{ordipointlabel}} is an automatic
   procedure with similar goals of avoiding overplotting, and its
   output can be edited with \code{orditkplot}.  See
-  \code{\link{ordiplot}}, \code{\link{plot.cca}},
-  and \code{\link{orditorp}} for
-  alternative ordination plots, and \code{\link{scores}} for
-  extracting ordination scores.  }
+  \code{\link[vegan]{ordiplot}}, \code{\link[vegan]{plot.cca}},
+  and \code{\link[vegan]{orditorp}} for
+  alternative ordination plots. }
 
 \examples{
-## The example needs user interaction and is not executed directly.
-## It should work when pasted to the window.
-\dontrun{
+if(interactive() && capabilities("tcltk")) {
 data(varespec)
 ord <- cca(varespec)
 ## Do something with the graph and end by clicking "Dismiss"
@@ -169,5 +167,6 @@ pl <- ordipointlabel(ord)
 orditkplot(pl)
 }
 }
+
 \keyword{ iplot }
 \keyword{ dynamic }
