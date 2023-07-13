@@ -7,8 +7,9 @@ import(scatterplot3d)
 ## ellipsoid hulls
 importFrom(cluster, ellipsoidhull)
 ## explicit imports for base R functions
-importFrom(grDevices, rainbow, col2rgb, rgb)
-importFrom(graphics, arrows, points, segments, text)
+importFrom(grDevices, rainbow, col2rgb, rgb, bmp, check.options, dev.off,
+           jpeg, palette, pdf, png, postscript, svg, tiff, xfig)
+importFrom(graphics, arrows, par, points, segments, text)
 importFrom(stats, weighted.mean, weights, as.hclust, reorder, cov.wt, qchisq)
 
 ## export what we got
@@ -16,6 +17,7 @@ export(orditree3d,
        ordiplot3d,
        ordirgl,
        ordirgltree,
+       orditkplot,
        orglcluster,
        orglellipse,
        orglpoints,
@@ -27,3 +29,7 @@ export(orditree3d,
        rgl.renyiaccum)
 ## S3 methods
 S3method(scores, ordiplot3d)
+S3method(plot, orditkplot)
+S3method(points, orditkplot)
+S3method(scores, orditkplot)
+S3method(text, orditkplot)
