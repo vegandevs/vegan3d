@@ -33,4 +33,6 @@ are still in **vegan**. **ggplot2**-based functions are in
 [![CRAN version](http://www.r-pkg.org/badges/version/vegan3d)](http://cran.rstudio.com/web/packages/vegan3d/index.html) [![](http://cranlogs.r-pkg.org/badges/grand-total/vegan3d)](http://cran.rstudio.com/web/packages/vegan3d/index.html)
 
 #### Build status
-[![Build Status](https://travis-ci.org/vegandevs/vegan3d.svg?branch=master)](https://travis-ci.org/vegandevs/vegan3d)  [![Build status](https://ci.appveyor.com/api/projects/status/hc8dbxrim2nj3c1i/branch/master)](https://ci.appveyor.com/project/vegandevs/vegan3d/branch/master)
+[![R build
+status](https://github.com/vegandevs/vegan3d/workflows/R-CMD-check/badge.svg)](https://github.com/vegandevs/vegan3d/actions)
+
