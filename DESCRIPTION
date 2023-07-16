@@ -1,6 +1,7 @@
 Package: vegan3d
-Title: Static and Dynamic 3D Plots for the 'vegan' Package
-Version: 1.2-0
+Title: Static and Dynamic 3D and Editable Interactive Plots for the
+    'vegan' Package
+Version: 2.0-0
 Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
 	     email="jhoksane@gmail.com"),
              person("Roeland", "Kindt", role="aut"),
@@ -9,6 +10,7 @@ Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
              person("Duncan", "Murdoch", role="ctb", 
                     email="murdoch.duncan@gmail.com"))
 Depends: R (>= 3.2.0), vegan (>= 2.3-0)
+Suggests: tcltk
 Imports: cluster, rgl, scatterplot3d (>= 0.3-40)
 Description: Static and dynamic 3D plots to be used with ordination
     results and in diversity analysis, especially with the vegan package.
