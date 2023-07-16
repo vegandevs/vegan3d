@@ -1,3 +1,21 @@
+### This function was a part of vegan package from 2008 (release
+### 1.11-0) to 2023 (release 2.6-4) when it was moved vegan3d due to
+### its exotic dependencies (Tcl/Tk). Development was mainly done in
+### 2008 to 2015 and mostly in 2008. Some obvious changes to be made
+### are:
+
+### * Enable several sets ("layers") of scores. Currently the only
+###   practical way is to base editing on ordipointlabel results (see
+###   Examples in doc).
+
+### * Enable reading of new sets of scores ("layers") from the Tcl/Tk
+###   window, even launching an empty window and reading all scores from
+###   the GUI.
+
+### * Handle arrows, such as CCA and envfit.
+
+### * Enable setting graphical par() per set of scores ("layers").
+
 ###
 ### Editable Tcl/Tk plot for ordination
 ###
