@@ -5,7 +5,13 @@
 and for static 3D plots based on **scatterplot3d** package.
 
 The package contains the following functions:
-
+ * `orditkplot`: a Tcl/Tk-based 2D editable plot. Function opens
+   a graphic window where labels can be moved with mouse, but
+   points are fixed. It is also possible to edit labels and zoom into
+   graph, and the final plot can be saved in various graphic formats
+   or saved as an **R** object that can be further manipulated or
+   plotted with standard **R** graphics commands.
+   
  * `ordirgl` with its support functions `orglpoints`, `orgltext`,
    `orglsegments`, `orglellipse`, `orglspider`, `orglcluster` and
    `orglspantree`.  These require **rgl** package and provide dynamic
