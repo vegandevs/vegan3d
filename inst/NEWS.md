@@ -1,3 +1,15 @@
+Version 2.0-0
+=============
+
+* Function `orditkplot` was transferred from **vegan**. Function
+  opens an editable graphic window based on Tcl/Tk. The window
+  has fixed points for scores with labels that can be moved to
+  better positions with mouse and their text can be edited. It is also
+  possible to zoom into selected rectangle in the graph. The edited plot
+  can be exported in various graphic formats or the edited object can be
+  saved in **R** for conventional plotting or further manipulation.
+  The function has been in **vegan** since 2008 (version 1.11-0).
+
 Version 1.2-0
 =============
 
