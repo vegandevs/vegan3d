@@ -3,7 +3,7 @@
 \alias{vegan3d}
 \docType{package}
 \title{
-Dynamic and Static 3D Plotting for Ordination and Clustering
+Dynamic and Static 3D and Interactive 2D Plots for Ordination
 }
 
 \description{
@@ -13,7 +13,11 @@ ordination methods or any other ordination method that \CRANpkg{vegan}
 \code{\link[vegan]{scores}} function can handle. It can also display
 \code{\link{hclust}} results in 3D over a 2D plane. Dynamic 3D plots
 are based on the \CRANpkg{rgl} package and static plots are drawn with the
-\CRANpkg{scatterplot3d} package.
+\CRANpkg{scatterplot3d} package. The package also provides 2D editable
+interactive plots for ordination. The points are fixed at their
+ordination scores, but labels can be moved to better position, and the
+result can be saved in various graphics formats or saved in **R**
+session and re-created with **R** plot commands.
 
 \packageIndices{vegan3d}
 
@@ -70,7 +74,20 @@ points.
 
 Function \code{\link{orditree3d}} will draw an \code{\link{hclust}}
 dendrogram over a plane similarly as \code{\link{ordirgltree}}.
+}
 
+\section{Editable Graphics with Tcl/Tk based orditkplot}{
+
+Function draws ordination scores in a new Tcl/Tk window with fixed
+points and their editable labels. The labels can be moved to better
+positions which helps with crowded plots. It is also possible to zoom
+into graph to display only a part of the complete graph. The edited
+result can be saved in various graphical formats or saved as an \R{}
+object in the session for further manipulation or re-creating the graph
+with standard **R** plotting tools.
+
+There are obvious ways of improving the function. Contributions are
+welcome.
 }
 
 \keyword{package}
