@@ -1,14 +1,16 @@
 Version 1.3-0
 =============
 
-* Function `orditkplot` with its support functions was transferred
-  from **vegan** for interactive ordination plots. The function will
-  open a new Tcl/Tk window where points are fixed at their ordination
-  scores, but their labels can be moved to better position with mouse
-  or edited. The plot can be exported in various graphics formats or
-  saved in the **R** session for further manipulation or re-created
-  with **R** commands.
-  
+* New function `orditkplot` with its support functions for interactive
+  ordination plots. The function will open a new Tcl/Tk window where
+  points are fixed at their ordination scores, but their labels can be
+  moved to better position with mouse or edited. The plot can be
+  exported in various graphics formats or saved in the **R** session
+  for further manipulation or re-created with **R** commands.
+
+  The function was transferred from **vegan** where it has been since
+  2008 (CRAN release 1.11-0).
+
   The function adds a conditional dependency on **tcltk** package.
 
 Version 1.2-0
