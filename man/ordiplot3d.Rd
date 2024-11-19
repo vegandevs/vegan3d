@@ -5,7 +5,7 @@
 \title{Three-Dimensional Ordination Graphics }
 \description{
   Function \code{ordiplot3d} displays three-dimensional ordination
-  graphics using \code{\link[scatterplot3d]{scatterplot3d}}. Function 
+  graphics using \code{\link[scatterplot3d]{scatterplot3d}}. Function
   works with all ordination results form \CRANpkg{vegan} and all ordination 
   results known by \code{\link[vegan]{scores}} function. 
 }
@@ -28,8 +28,8 @@ ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
     \code{\link{arrows}} function. }
   \item{arr.col}{Colour of biplot \code{\link{arrows}} and centroids of
     environmental variables. }
-  \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
-    displayed in the graph.}
+  \item{envfit}{Fitted environmental variables from
+    \code{\link[vegan]{envfit}} displayed in the graph.}
   \item{xlab, ylab, zlab}{Axis labels passed to
     \code{\link[scatterplot3d]{scatterplot3d}}. If missing, labels  are
     taken from the
@@ -45,7 +45,7 @@ ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
   taste (see \code{\link[scatterplot3d]{scatterplot3d}}).
 
   Function returns invisibly an object of class \code{ordiplot3d}
-  which inherits from \code{\link{ordiplot}}. The result object
+  which inherits from \code{\link[vegan]{ordiplot}}. The result object
   contains the projected coordinates of plotted items and functions to
   convert 3D data to 2D (see
   \code{\link[scatterplot3d]{scatterplot3d}}). Function will display
@@ -86,7 +86,7 @@ ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
   \code{xyz.convert} which projects three-dimensional coordinates onto
   the plane used in the current plot (see Examples). In addition,
   there is a function \code{envfit.convert} that projects a
-  three-dimensional \code{\link{envfit}} object to the current plot.
+  three-dimensional \code{\link[vegan]{envfit}} object to the current plot.
 
 }
 

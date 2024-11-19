@@ -29,7 +29,7 @@ The \CRANpkg{rgl} graphics are dynamic 3D plots that can be spinned and
 zoomed by mouse. The \pkg{vegan3d} package provides interface to
 ordination and clustering objects. The functions use \CRANpkg{rgl} setting
 and conventions and do not change the user settings. For general
-configuration of the plots, users should check \pkg{\link{rgl}}
+configuration of the plots, users should check \pkg{rgl}
 documentation. For instance, general look and feel of drawn items can
 be configured with \code{\link[rgl]{material3d}}.
 
