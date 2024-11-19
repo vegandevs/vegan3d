@@ -14,7 +14,7 @@
   Function \code{ordirgl} displays three-dimensional dynamic
   ordination graphs which can be rotated and zoomed. This function
   works with all ordination results from \code{vegan} and all
-  ordination results known by the \code{\link{scores}} function. The
+  ordination results known by the \code{\link[vegan]{scores}} function. The
   \code{orgl}-prefixed functions add elements to the \code{ordirgl}
   graph similarly as \code{ordi}-prefixed functions in \CRANpkg{vegan}.
 }
@@ -38,9 +38,10 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
     col = "black", ...)
 }
 \arguments{
-  \item{object}{An ordination result or any object known by \code{\link{scores}}. }
+  \item{object}{An ordination result or any object known by
+    \code{\link[vegan]{scores}}. }
   \item{display}{Display \code{"sites"} or \code{"species"} or other
-    ordination object recognized by \code{\link{scores}}. }
+    ordination object recognized by \code{\link[vegan]{scores}}. }
   \item{choices}{Selected three axes. }
   \item{type}{The type of plots: \code{"p"} for points or \code{"t"} for
     text labels.}
@@ -50,7 +51,7 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
     environmental variables. }
   \item{radius}{Size of points in the units of ordination scores.}
   \item{text}{Text to override the default with \code{type = "t"}.}
-  \item{envfit}{Fitted environmental variables from \code{\link{envfit}}
+  \item{envfit}{Fitted environmental variables from \code{\link[vegan]{envfit}}
     displayed in the graph. Use \code{envfit = NA} to suppress display
     of environmental variables in constrained ordination.}
   \item{adj}{Text justification passed to \code{\link[rgl]{text3d}}.}
@@ -58,8 +59,8 @@ orglcluster(object, cluster, prune = 0, display = "sites", choices = 1:3,
     drawn.}
   \item{order.by}{Order points by this variable within \code{groups}.}
   \item{w}{Weights used to find the average within group. Weights are
-    used automatically for \code{\link{cca}}
-    and \code{\link{decorana}} results, unless undone by the
+    used automatically for \code{\link[vegan]{cca}},
+    and \code{\link[vegan]{decorana}} results, unless undone by the
     user. \code{w=NULL} sets equal weights to all points. }
   \item{kind}{Draw ellipse for standard deviations of points
     (\code{"sd"}) or standard deviations of their averages
