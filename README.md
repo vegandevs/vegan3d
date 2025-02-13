@@ -42,3 +42,12 @@ are still in **vegan**. **ggplot2**-based functions are in
 [![R build
 status](https://github.com/vegandevs/vegan3d/workflows/R-CMD-check/badge.svg)](https://github.com/vegandevs/vegan3d/actions)
 
+#### Install Current github Version from R-Universe
+
+```
+# Install 'vegan3d' in R:
+install.packages('vegan3d',
+    repos = c('https://vegandevs.r-universe.dev', 'https://cloud.r-project.org'))
+```
+
+
