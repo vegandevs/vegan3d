@@ -1,3 +1,13 @@
+Version 1.3-1
+=============
+
+* `ordiplot3d` defaults to order axes as horizontal, vertical,
+  "depth". Function gains new argument `xyz` to allow users to set the
+  ordering.
+
+* Fixes minor CRAN issues on cross-references to other packages in
+  manual pages.
+
 Version 1.3-0
 =============
 

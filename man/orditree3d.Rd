@@ -90,7 +90,7 @@ ordirgltree(ord, cluster, prune = 0, display = "sites", choices = c(1, 2),
 \examples{
   data(dune, dune.env)
   d <- vegdist(dune)
-  m <- metaMDS(d)
+  m <- metaMDS(d, trace = FALSE)
   cl <- hclust(d, "aver")
   orditree3d(m, cl, pch=16, col=cutree(cl, 3))
   ## ordirgltree makes ordinary rgl graphics. It accepts
