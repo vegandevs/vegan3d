@@ -4,16 +4,20 @@ importFrom(vegan, scores, ordiArrowMul)
 import(rgl)
 ## scatterplot3d only has one function
 import(scatterplot3d)
+## lattice functions
+importFrom(lattice, cloud, panel.cloud, prepanel.default.cloud)
 ## ellipsoid hulls
 importFrom(cluster, ellipsoidhull)
 ## explicit imports for base R functions
 importFrom(grDevices, rainbow, col2rgb, rgb, bmp, check.options, dev.off,
            jpeg, palette, pdf, png, postscript, svg, tiff, xfig)
 importFrom(graphics, arrows, par, points, segments, text)
-importFrom(stats, weighted.mean, weights, as.hclust, reorder, cov.wt, qchisq)
+importFrom(stats, as.formula, weighted.mean, weights, as.hclust, reorder,
+           cov.wt, qchisq)
 
 ## export what we got
 export(orditree3d,
+       ordilattice3d,
        ordiplot3d,
        ordirgl,
        ordirgltree,
