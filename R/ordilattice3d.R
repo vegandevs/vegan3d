@@ -1,4 +1,4 @@
-`ordicloud` <-
+`ordilattice3d` <-
     function(x, data = NULL, formula, display = "sites", choices=1:3,
              panel = "panel.ordi3d",
              prepanel = "prepanel.ordi3d", ...)
