@@ -10,17 +10,18 @@
   results known by \code{\link[vegan]{scores}} function. 
 }
 \usage{
-ordiplot3d(object, display = "sites", choices = 1:3, xyz = c(1,3,2),
-    col = "black", ax.col = "red", arr.len = 0.1, arr.col = "blue",
-    envfit, xlab, ylab, zlab, ...)
+ordiplot3d(object, display = "sites", choices = c(1,3,2), col = "black",
+    ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
+    xlab, ylab, zlab, ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by 
     \code{\link[vegan]{scores}}. }
   \item{display}{Display \code{"sites"} or \code{"species"} or other
     ordination object recognized by \code{\link[vegan]{scores}}. }
-  \item{choices}{Selected three axes.}
-  \item{xyz}{Display of selected as horizontal, \dQuote{depth}, vertical.}
+  \item{choices}{Selected three axes. First axis is horizontal, second
+    vertical and third is \dQuote{depth}. The default will use axes 1
+    and 2 as front panel.}
   \item{col}{Colours of points. Can be a vector, and factors are
     interpreted as their internal numerical codes.}
   \item{ax.col}{Axis colour (concerns only the crossed axes through the
@@ -128,9 +129,12 @@ text(pl$xyz.convert(sp), rownames(sp), cex=0.7, xpd=TRUE)
 ord <- cca(dune)
 ef <- envfit(ord ~ Moisture + A1, dune.env, choices = 1:3)
 ### 1. use argument 'envfit'
-ordiplot3d(ord, scaling = "sites", envfit = ef)
+ordiplot3d(ord, envfit = ef)
 ### 2. use returned envfit.convert function for better user control
 pl3 <- ordiplot3d(ord, scaling = "sites")
+plot(pl3$envfit.convert(ef), at = pl3$origin)
+### envfit.convert() also handles different 'choices' of axes
+pl3 <- ordiplot3d(ord, choices = c(1,3,2))
 plot(pl3$envfit.convert(ef), at = pl3$origin)
 ### vegan::ordiXXXX functions can add items to the plot
 ord <- cca(dune)
