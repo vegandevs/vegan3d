@@ -1,8 +1,19 @@
-Version 1.3-1
+Version 1.4-0
 =============
+
+* `ordilattice3d`: new 3D plotting function for ordination
+  results using **lattice** package. Function was moved from **vegan**
+  where it was called `ordicloud`, and it will be deprecated and
+  removed from **vegan**. The function is rudimentary and cannot
+  display biplot arrows or centroids. The only advantage over
+  `ordiplot3d` is that the output can be "faceted" or split into
+  graphical grid by external variable.
 
 * `ordiplot3d` defaults to order axes as horizontal, vertical and
   "depth".
+
+* `ordirgl` failed with argument `envfit`. Bug report
+  [#11](https://github.com/vegandevs/vegan3d/issues/11).
 
 * Fixes minor CRAN issues on cross-references to other packages in
   manual pages.
