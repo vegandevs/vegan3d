@@ -1,5 +1,5 @@
 `ordiplot3d` <-
-    function (object, display = "sites", choices = 1:3, col = "black",
+    function (object, display = "sites", choices = c(1,3,2), col = "black",
               ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
               xlab, ylab, zlab, ...)
 {
