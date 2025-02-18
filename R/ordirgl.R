@@ -46,7 +46,9 @@
         (is.list(object) && !is.null(object$CCA) && object$CCA$rank > 0)) {
         if (!missing(envfit)) 
             object <- envfit
-        if (!missing(envfit) && is.na(envfit))
+        ## user can set envfit=NA to suppress display of biplot &
+        ## centroids in constrained ordination
+        if (!missing(envfit) && all(is.na(envfit)))
             return(invisible())
         bp <- scores(object, dis = "bp", choices = choices)
         cn <- scores(object, dis = "cn", choices = choices)
