@@ -10,9 +10,9 @@
   results known by \code{\link[vegan]{scores}} function. 
 }
 \usage{
-ordiplot3d(object, display = "sites", choices = 1:3, xyz = c(1,3,2),
-    col = "black", ax.col = "red", arr.len = 0.1, arr.col = "blue",
-    envfit, xlab, ylab, zlab, ...)
+ordiplot3d(object, display = "sites", choices = 1:3, col = "black",
+    ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
+    xlab, ylab, zlab, ...)
 }
 \arguments{
   \item{object}{An ordination result or any object known by 
@@ -20,7 +20,6 @@ ordiplot3d(object, display = "sites", choices = 1:3, xyz = c(1,3,2),
   \item{display}{Display \code{"sites"} or \code{"species"} or other
     ordination object recognized by \code{\link[vegan]{scores}}. }
   \item{choices}{Selected three axes.}
-  \item{xyz}{Display of selected as horizontal, \dQuote{depth}, vertical.}
   \item{col}{Colours of points. Can be a vector, and factors are
     interpreted as their internal numerical codes.}
   \item{ax.col}{Axis colour (concerns only the crossed axes through the
@@ -112,9 +111,9 @@ ordiplot3d(object, display = "sites", choices = 1:3, xyz = c(1,3,2),
 ### Default 'ordiplot3d'
 data(dune, dune.env)
 ord <- cca(dune ~ A1 + Moisture, dune.env)
-ordiplot3d(ord, scaling = "sites")
+ordiplot3d(ord)
 ### A boxed 'pin' version
-ordiplot3d(ord, scaling = "sites", type = "h")
+ordiplot3d(ord, type = "h")
 ### More user control
 pl <- ordiplot3d(ord, scaling = "symmetric", angle=15, type="n")
 points(pl, "points", pch=16, col="red", cex = 0.7)
@@ -128,13 +127,16 @@ text(pl$xyz.convert(sp), rownames(sp), cex=0.7, xpd=TRUE)
 ord <- cca(dune)
 ef <- envfit(ord ~ Moisture + A1, dune.env, choices = 1:3)
 ### 1. use argument 'envfit'
-ordiplot3d(ord, scaling = "sites", envfit = ef)
+ordiplot3d(ord, envfit = ef)
 ### 2. use returned envfit.convert function for better user control
-pl3 <- ordiplot3d(ord, scaling = "sites")
+pl3 <- ordiplot3d(ord)
+plot(pl3$envfit.convert(ef), at = pl3$origin)
+### envfit.convert() also handles different 'choices' of axes
+pl3 <- ordiplot3d(ord, choices = c(1,3,2))
 plot(pl3$envfit.convert(ef), at = pl3$origin)
 ### vegan::ordiXXXX functions can add items to the plot
 ord <- cca(dune)
-pl4 <- with(dune.env, ordiplot3d(ord, scaling = "sites", col = Management, pch=16))
+pl4 <- with(dune.env, ordiplot3d(ord, col = Management, pch=16))
 with(dune.env, ordiellipse(pl4, Management, draw = "poly", col = 1:4,
   alpha = 60))
 with(dune.env, ordispider(pl4, Management, col = 1:4, label = TRUE))

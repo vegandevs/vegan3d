@@ -1,13 +1,12 @@
 `ordiplot3d` <-
-    function (object, display = "sites", choices = 1:3, xyz = c(1,3,2),
-              col = "black", ax.col = "red", arr.len = 0.1, arr.col = "blue",
-              envfit, xlab, ylab, zlab, ...)
+    function (object, display = "sites", choices = 1:3, col = "black",
+              ax.col = "red", arr.len = 0.1, arr.col = "blue", envfit,
+              xlab, ylab, zlab, ...)
 {
     ordiArgAbsorber <- function(..., shrink, origin, scaling, triangular,
                               display, choices, const, truemean, FUN)
         { match.fun(FUN)(...) }
     x <- scores(object, display = display, choices = choices, ...)
-    x <- x[,xyz, drop=FALSE]
     if (missing(xlab)) xlab <- colnames(x)[1]
     if (missing(ylab)) ylab <- colnames(x)[2]
     if (missing(zlab)) zlab <- colnames(x)[3]
