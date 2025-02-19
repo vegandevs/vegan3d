@@ -16,8 +16,8 @@ are based on the \CRANpkg{rgl} package and static plots are drawn with the
 \CRANpkg{scatterplot3d} package. The package also provides 2D editable
 interactive plots for ordination. The points are fixed at their
 ordination scores, but labels can be moved to better position, and the
-result can be saved in various graphics formats or saved in **R**
-session and re-created with **R** plot commands.
+result can be saved in various graphics formats or saved in \R{}
+session and re-created with \R{} plot commands.
 
 \packageIndices{vegan3d}
 
@@ -36,7 +36,9 @@ be configured with \code{\link[rgl]{material3d}}.
 The \CRANpkg{rgl} package may not be available in all platforms, and
 therefore the package is not automatically attached. If you want to
 use \CRANpkg{rgl} functions, you must either prefix commands with
-\code{rgl::} or call \code{library(rgl)} in your session.
+\code{rgl::} or call \code{library(rgl)} in your session. If you
+cannot launch \code{rgl} window (or widget) on your platform, check
+the instructions on the \CRANpkg{rgl}.
 
 Function \code{\link{ordirgl}} is simalar as
 \code{\link[vegan]{ordiplot}} in \CRANpkg{vegan}, and any ordination
@@ -56,13 +58,16 @@ functions.
 
 }
 
-\section{Drawing with scatterplot3d Functions}{
+\section{Drawing with scatterplot3d and lattice Functions}{
 
 The \CRANpkg{scatterplot3d} package draws static 3D graphics, and
 \pkg{vegan3d} provides an interface for ordination and clustering
 objects. You must consult the
 \code{\link[scatterplot3d]{scatterplot3d}} documentation for
-configuring your plots.
+configuring your plots. \pkg{vegan3d} function
+\code{\link{ordilattice3d}} is similar, but is based on the
+\CRANpkg{lattice} package, and can be modified using \pkg{lattice}
+commands and arguments.
 
 Function \code{\link{ordiplot3d}} is similar to \code{\link{ordirgl}}
 or \code{\link[vegan]{ordiplot}} and draws a static 3D plot in the
@@ -71,6 +76,11 @@ which contains the projected points, and \CRANpkg{vegan} \code{ordi*}
 prefix functions can use this object. For instance,
 \code{\link[vegan]{ordiellipse}} will add ellipses on the projected
 points.
+
+Function \code{\link{ordilattice3d}} is a similar to
+\code{\link{ordiplot3d}} in \pkg{lattice} graphics, but currently more
+limited than \code{ordiplot3d}. There are obvious ways of improving
+the function. Contributions are welcome.
 
 Function \code{\link{orditree3d}} will draw an \code{\link{hclust}}
 dendrogram over a plane similarly as \code{\link{ordirgltree}}.
@@ -84,7 +94,7 @@ positions which helps with crowded plots. It is also possible to zoom
 into graph to display only a part of the complete graph. The edited
 result can be saved in various graphical formats or saved as an \R{}
 object in the session for further manipulation or re-creating the graph
-with standard **R** plotting tools.
+with standard \R{} plotting tools.
 
 There are obvious ways of improving the function. Contributions are
 welcome.
