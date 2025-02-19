@@ -24,6 +24,9 @@ The package contains the following functions:
  * `ordiplot3d` for static 3D ordination diagrams. This requires
    **scatterplot3d** package.
 
+ * `ordilattice3d` for static 3D ordination diagrams. This requires
+   **lattice** package.
+
  * `orditree3d` and `ordirgltree` functions to display a coloured
     dendrogram tree over a 2D plane. The first is a
     static function based on **scatterplot3d** and the latter a
