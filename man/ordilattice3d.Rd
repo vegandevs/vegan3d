@@ -27,12 +27,12 @@ ordilattice3d(x, data = NULL, formula, display = "sites", choices = 1:3,
     ordination axes must be called by the same names as in the
     ordination results (and these names vary among methods).}
   \item{display}{ The kind of scores: an argument passed to
-    \code{\link{scores}}. }
+    \code{\link[vegan]{scores}}. }
   \item{choices}{ The axes selected: an argument passed to
-    \code{\link{scores}}. } 
+    \code{\link[vegan]{scores}}. }
   \item{panel, prepanel}{ The names of the panel and prepanel
     functions. }
-  \item{\dots}{ Arguments passed to \code{\link{scores}} methods or
+  \item{\dots}{ Arguments passed to \code{\link[vegan]{scores}} methods or
     \pkg{lattice} functions.}
 }
 
