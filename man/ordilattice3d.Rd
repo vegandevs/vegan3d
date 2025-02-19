@@ -16,8 +16,9 @@ ordilattice3d(x, data = NULL, formula, display = "sites", choices = 1:3,
 }
 
 \arguments{
-  \item{x}{ An ordination result that \code{\link{scores}} knows: any
-    ordination result in \pkg{vegan} and many others. }
+  \item{x}{ An ordination result that \pkg{vegan} function
+    \code{\link[vegan]{scores}} knows: any ordination result in
+    \pkg{vegan} and many others. }
   \item{data}{ Optional data to amend ordination results. The ordination
     results are found from \code{x}, but you may give here data for other
     variables needed in plots. Typically these are environmental data.}
