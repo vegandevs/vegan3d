@@ -20,8 +20,8 @@ The package contains the following functions:
  * **rgl** based support functions `rgl.isomap` to display `isomap`
      results, and `rgl.renyiaccum` to display `renyiaccum` results.
 
- * `ordiplot3d` for static 3D ordination diagrams. This requires
-   **scatterplot3d** package.
+ * `ordiplot3d` (based on **scatterplot3d**) and `ordilattice3d` (based on
+    **lattice**) for static 3D ordination diagrams.
 
  * `orditree3d` and `ordirgltree` functions to display a coloured
     dendrogram tree over a 2D plane. The first is a
