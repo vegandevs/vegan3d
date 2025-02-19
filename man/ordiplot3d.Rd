@@ -106,7 +106,11 @@ ordiplot3d(object, display = "sites", choices = c(1,3,2), col = "black",
 
 \seealso{ \code{\link[scatterplot3d]{scatterplot3d}},
   \code{\link[vegan]{ordiplot}}, \code{\link[vegan]{ordiarrows}},
-  \code{\link[vegan]{ordihull}}.
+  \code{\link[vegan]{ordihull}}. Function \code{\link{ordilattice3d}}
+  provides an alternative based on \pkg{lattice} package. However, it
+  not yet quite matured and cannot display biplot (or fitted) arrows
+  and factor centroids. Currently, its main advantage is that it can
+  split plots in different panels by external variables.
 }
 
 \examples{

@@ -5,8 +5,8 @@
 
 \title{ 3D Trellis (Lattice) Plots for Ordination }
 \description{
-  Function \code{ordicloud} provides an interface to plot ordination
-  results using Trellis function \code{\link[lattice]{cloud}} in package
+  Function \code{ordicloud} provides an interface for 3D ordination
+  graphics using Trellis function \code{\link[lattice]{cloud}} in package
   \pkg{lattice}.
 }
 
@@ -24,9 +24,7 @@ ordilattice3d(x, data = NULL, formula, display = "sites", choices = 1:3,
   \item{formula}{ Formula to define the plots. A default formula will be
     used if this is omitted. The
     ordination axes must be called by the same names as in the
-    ordination results (and these names vary among methods). In
-    \code{ordisplom}, special character \code{.} refers to the
-    ordination result. }
+    ordination results (and these names vary among methods).}
   \item{display}{ The kind of scores: an argument passed to
     \code{\link{scores}}. }
   \item{choices}{ The axes selected: an argument passed to
@@ -44,14 +42,13 @@ ordilattice3d(x, data = NULL, formula, display = "sites", choices = 1:3,
   All graphical parameters are passed to the \pkg{lattice}
   functions so that the graphs are configurable.
 
-  The argument \code{x} must always be an ordination result. The scores
-  are extracted with \pkg{vegan} function \code{\link{scores}} so that
-  these functions work with all \pkg{vegan} ordinations and many others.
+  The argument \code{x} must always be an ordination result. The
+  scores are extracted with \pkg{vegan} function
+  \code{\link[vegan]{scores}} so that these functions work with all
+  \pkg{vegan} ordinations and many others.
 
-  The \code{formula} is used to define the models. Function has simple
-  default formulae which is used if \code{formula} is missing.  If
-  \code{formula} is given, ordination results must be referred to as
-  \code{.} and other variables by their names. In other functions, the
+  The \code{formula} is used to define the models. Function has a
+  default formula which is used if \code{formula} is missing. The
   formula must use the names of ordination scores and names of
   \code{data}.
 
@@ -59,36 +56,42 @@ ordilattice3d(x, data = NULL, formula, display = "sites", choices = 1:3,
   optional. The \code{data} should contain other variables than
   ordination scores to be used in plots. Typically, they are
   environmental variables (typically factors) to define panels or plot
-  symbols.
+  symbols (\pkg{lattice} argument \code{groups}).
 
   The proper work is done by the panel function. The layout can be
   changed by defining own panel functions. See
   \code{\link[lattice]{panel.cloud}} for details and survey of
   possibilities.
-
-  Ordination graphics should always be isometric: same scale should be
-  used in all axes. The isometric scaling is defined in \code{panel} and
-  \code{prepanel} functions. You must replace these functions if you
-  want to have non-isometric scaling of graphs }
+}
 
 \value{
   The function return \code{\link[lattice]{Lattice}} objects of class
   \code{"trellis"}.   
 }
+
 \author{Jari Oksanen }
- 
-\seealso{
-  \code{\link[lattice]{Lattice}},
-  \code{\link[lattice]{cloud}},
-  \code{\link[lattice]{panel.cloud}}
+
+\note{Function is still rudimentary. For instance, it cannot display
+  biplot arrows or factor centroids from constrained ordination or
+  \code{\link[vegan]{envfit}}.
 }
+
+\seealso{
+  For functions used in \code{ordilattice3d} see
+  \code{\link[lattice]{Lattice}}, \code{\link[lattice]{cloud}},
+  \code{\link[lattice]{panel.cloud}}.  Function
+  \code{\link{ordiplot3d}} provides a more mature and flexible
+  alternative which can also handle biplot arrows and factor centroids
+  and adding new graphical elements to the plots.}
+
 \examples{
 data(dune, dune.env)
 ord <- cca(dune)
 
-ordilattice3d(ord, form = CA2 ~ CA3*CA1, groups = Manure, data = dune.env)
+ordilattice3d(ord, form = CA2 ~ CA3*CA1, groups = Manure, data = dune.env,
+   scaling="sites")
 ordilattice3d(ord, form = CA2 ~ CA3*CA1 | Management, groups = Manure,
-   data = dune.env, auto.key = TRUE, type = c("p","h"))
+   data = dune.env, auto.key = TRUE, type = c("p","h"), scaling = "sites")
 }
 
 \keyword{ hplot }
