@@ -307,7 +307,7 @@
                tiff = tiff(filename=fname, width=pixdim[1], height=pixdim[2]),
                bmp = bmp(filename=fname, width=pixdim[1], height=pixdim[2]),
                fig = {tcltk::tkmessageBox(
-                                 message="fig is deprecated in R 4.4 and defunct in R 4.5",
+                                 message="XFig is deprecated in R 4.4 and defunct in R 4.5",
                                  detail="consider svg device instead",
                                  icon = "warning", type = "ok")
                       xfig(file=fname, width=xy$dim[1], height=xy$dim[2])})
