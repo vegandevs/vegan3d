@@ -1,7 +1,7 @@
 Package: vegan3d
 Title: Static and Dynamic 3D and Editable Interactive Plots for the
     'vegan' Package
-Version: 1.4-0
+Version: 1.4-1
 Authors@R: c(person("Jari", "Oksanen", role=c("aut","cre"),
 	     email="jhoksane@gmail.com"),
              person("Roeland", "Kindt", role="aut"),

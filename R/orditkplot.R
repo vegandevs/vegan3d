@@ -262,6 +262,8 @@
             falt["jpg"] <- FALSE
         if (!capabilities("cairo"))
             falt["svg"] <- FALSE
+        if (getRversion() >= "4.5") # xfig is defunct & removed in R 4.5.0
+            falt["fig"] <- FALSE
         ## Should work also in R < 2.8.0 with no capabilities("tiff")
         if (!isTRUE(unname(capabilities("tiff"))))
             falt["tiff"] <- FALSE
@@ -304,7 +306,11 @@
                quality = 100),
                tiff = tiff(filename=fname, width=pixdim[1], height=pixdim[2]),
                bmp = bmp(filename=fname, width=pixdim[1], height=pixdim[2]),
-               fig = xfig(file=fname, width=xy$dim[1], height=xy$dim[2]))
+               fig = {tcltk::tkmessageBox(
+                                 message="fig is deprecated in R 4.4 and defunct in R 4.5",
+                                 detail="consider svg device instead",
+                                 icon = "warning", type = "ok")
+                      xfig(file=fname, width=xy$dim[1], height=xy$dim[2])})
         plot.orditkplot(xy)
         dev.off()
     }
