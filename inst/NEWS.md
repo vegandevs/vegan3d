@@ -1,3 +1,9 @@
+Version 1.4-1
+=============
+
+* R 4.4.0 deprecated XFig device, and it was defunct & removed in R
+  4.5.0.
+
 Version 1.4-0
 =============
 
