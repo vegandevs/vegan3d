@@ -29,6 +29,8 @@ export(orditree3d,
        orglspantree,
        orglspider,
        orgltext,
+       panel.ordi3d,
+       prepanel.ordi3d,
        rgl.isomap,
        rgl.renyiaccum)
 ## S3 methods
