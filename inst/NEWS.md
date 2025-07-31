@@ -1,8 +1,10 @@
 Version 1.4-1
 =============
 
-* R 4.4.0 deprecated XFig device, and it was defunct & removed in R
-  4.5.0.
+* `orditkplot`: R 4.4.0 deprecated XFig device, and it was defunct and
+  removed in R 4.5.0.
+
+* `ordilattice3d` failed with **vegan** 2.8-0 or later.
 
 Version 1.4-0
 =============
