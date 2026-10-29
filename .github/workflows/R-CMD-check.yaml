@@ -52,6 +52,8 @@ jobs:
       - run: tlmgr update --self
 
       - name: Install additional LaTeX packages
+        env:
+          TEXLIVE_PREFER_OWN: "1"
         run: |
           tlmgr install ae babel-english pdflscape pdfpages sidecap
           tlmgr list --only-installed
