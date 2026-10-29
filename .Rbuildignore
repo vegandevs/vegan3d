@@ -3,3 +3,4 @@
 ^travis-tool\.sh
 ^appveyor\.yml$
 ^README\.md
+^codecov\.yml$
